@@ -11,7 +11,7 @@
 
     <!--子模块-->
     <modules>
-
+        <module>xinkai-gateway</module>
     </modules>
 
     <!--版本控制-->
