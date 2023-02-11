@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xinkai.cloud</groupId>
+    <artifactId>xinkai-core-cloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <!--子模块-->
+    <modules>
+
+    </modules>
+
+    <!--版本控制-->
+    <properties>
+        <!-- 指定maven编译时读取文件使用的编码 文件拷贝时的编码-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- JDK 版本-->
+        <java.version>1.8</java.version>
+    </properties>
+
+    <!--依赖自动从项目定义的仓库中下载-->
+    <description>
+
+    </description>
+
+    <!--继承自该项目的所有子项目的默认依赖信息，这部分的依赖信息不会被立即解析。-->
+    <!--当子项目声明一个依赖，如果group ID和artifact ID以外的一些信息没有描述，则使用这里的依赖信息-->
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--配置依赖包下载地址-->
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>aliyun</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
+</project>
