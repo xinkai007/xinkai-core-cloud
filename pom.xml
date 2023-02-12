@@ -3,11 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!--父工程配置-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version>
+        <relativePath/>
+        <!--lookup parent from repository-->
+    </parent>
 
     <groupId>com.xinkai.cloud</groupId>
     <artifactId>xinkai-core-cloud</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <!--子模块-->
     <modules>
@@ -21,17 +29,40 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- JDK 版本-->
         <java.version>1.8</java.version>
+        <!--Spring Cloud 相关依赖-->
+        <spring-cloud.version>2021.0.2</spring-cloud.version>
+        <!--工具包依赖-->
+        <lombok.version>1.18.18</lombok.version>
+        <hutool.version>5.7.21</hutool.version>
     </properties>
 
     <!--依赖自动从项目定义的仓库中下载-->
-    <description>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
 
-    </description>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+    </dependencies>
 
     <!--继承自该项目的所有子项目的默认依赖信息，这部分的依赖信息不会被立即解析。-->
     <!--当子项目声明一个依赖，如果group ID和artifact ID以外的一些信息没有描述，则使用这里的依赖信息-->
     <dependencyManagement>
         <dependencies>
+            <!--Spring Cloud 相关依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
