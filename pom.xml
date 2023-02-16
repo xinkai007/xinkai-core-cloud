@@ -30,8 +30,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- JDK 版本-->
         <java.version>1.8</java.version>
-        <!--Spring Cloud 相关依赖-->
+        <!--Spring Cloud & Alibaba相关依赖-->
         <spring-cloud.version>2021.0.2</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <!--数据库配置-->
         <redisson.version>3.16.8</redisson.version>
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
@@ -59,11 +60,18 @@
     <!--当子项目声明一个依赖，如果group ID和artifact ID以外的一些信息没有描述，则使用这里的依赖信息-->
     <dependencyManagement>
         <dependencies>
-            <!--Spring Cloud 相关依赖-->
+            <!--Spring Cloud & Alibaba 相关依赖-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
