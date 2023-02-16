@@ -73,6 +73,11 @@
                 <artifactId>common-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>common-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!--验证码依赖包-->
             <dependency>
                 <groupId>com.github.whvcse</groupId>

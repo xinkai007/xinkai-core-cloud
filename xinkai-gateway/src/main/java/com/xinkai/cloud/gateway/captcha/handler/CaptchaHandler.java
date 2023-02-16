@@ -3,6 +3,7 @@ package com.xinkai.cloud.gateway.captcha.handler;
 import cn.hutool.core.util.IdUtil;
 import com.wf.captcha.base.Captcha;
 import com.xinkai.cloud.common.result.Result;
+import com.xinkai.cloud.constant.RedisKeyPrefixConstants;
 import com.xinkai.cloud.gateway.annotaion.CaptchaType;
 import com.xinkai.cloud.gateway.annotaion.CaptchaValueTtl;
 import com.xinkai.cloud.gateway.captcha.component.CaptchaProducer;
@@ -66,7 +67,7 @@ public class CaptchaHandler implements HandlerFunction<ServerResponse> {
         String captchaValue = captcha.text();
         //2.将生成的验证码信息缓存至Redis
         String uuid = IdUtil.simpleUUID();
-        stringRedisTemplate.opsForValue().set(uuid, captchaValue, captchaValueTtl, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set(RedisKeyPrefixConstants.VALIDATION_CODE_KEY_PREFIX + uuid, captchaValue, captchaValueTtl, TimeUnit.SECONDS);
         //3.将生成的验证码图片信息返回
         String captchaBase64 = captcha.toBase64();
         Map<String, String> result = new HashMap<>(2);

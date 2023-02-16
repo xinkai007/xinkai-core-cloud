@@ -1,6 +1,6 @@
 #服务信息
-server:
-  port: 9999
 spring:
   application:
     name: xinkai-gateway
+  profiles:
+    active: dev
