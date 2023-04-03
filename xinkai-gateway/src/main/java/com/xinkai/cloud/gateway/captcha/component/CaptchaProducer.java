@@ -16,38 +16,34 @@ import java.awt.*;
  * @author: xinkai
  * @email: xinkai8011@gmail.com
  * @date: 2023/2/12
- * @date 2023/02/12
  */
 @Component
 public class CaptchaProducer {
-    /**
-     * 由于定义验证码图片尺寸变量较小，所以此处使用byte定义 占用字节：4取值范围：-128和 127
-     */
-
+    //由于定义验证码图片尺寸变量较小，所以此处使用byte定义 占用字节：4取值范围：-128和 127
     /**
      * 验证码内容长度
      */
-    private byte length = 4;
+    private static final byte LENGTH = 4;
     /**
      * 验证码图片宽度
      */
-    private byte width = 120;
+    private static final byte WIDTH = 120;
     /**
      * 验证码图片高度
      */
-    private byte height = 36;
+    private static final byte HEIGHT = 36;
     /**
      * 字体
      */
-    private String font = "Verdana";
+    private static final String FONT = "Verdana";
     /**
      * 字体样式
      */
-    private int fontStyle = Font.PLAIN;
+    private static final int FONT_STYLE = Font.PLAIN;
     /**
      * 字体大小
      */
-    private byte fontSize = 20;
+    private static final byte FONT_SIZE = 20;
 
     /**
      * 获取验证码
@@ -61,39 +57,29 @@ public class CaptchaProducer {
         switch (captchaTypeEnum) {
             //算术
             case ARITHMETIC:
-                captcha = new ArithmeticCaptcha(width, height, 2);
+                captcha = new ArithmeticCaptcha(WIDTH, HEIGHT, 2);
                 break;
             //中文
             case CHINESE:
-                captcha = new ChineseCaptcha(width, height, length);
+                captcha = new ChineseCaptcha(WIDTH, HEIGHT, LENGTH);
                 break;
             //中文闪图
             case CHINESE_GIF:
-                captcha = new ChineseGifCaptcha(width, height, length);
+                captcha = new ChineseGifCaptcha(WIDTH, HEIGHT, LENGTH);
                 break;
             //闪图
             case GIF:
-                captcha = new GifCaptcha(width, height, length);
+                captcha = new GifCaptcha(WIDTH, HEIGHT, LENGTH);
                 break;
             //字符
             case SPEC:
-                captcha = new SpecCaptcha(width, height, length);
+                captcha = new SpecCaptcha(WIDTH, HEIGHT, LENGTH);
                 break;
             default:
                 throw new RuntimeException("验证码配置信息错误！");
         }
         //设置字体样式
-        captcha.setFont(new Font(font, fontStyle, fontSize));
+        captcha.setFont(new Font(FONT, FONT_STYLE, FONT_SIZE));
         return captcha;
-    }
-
-    public static void main(String[] args) {
-        CaptchaProducer captchaProducer = new CaptchaProducer();
-        CaptchaTypeEnum arithmetic = CaptchaTypeEnum.GIF;
-        Captcha captcha = captchaProducer.getCaptcha(arithmetic);
-        String s = captcha.toBase64();
-        System.out.println(s);
-        String text = captcha.text();
-        System.out.println(text);
     }
 }

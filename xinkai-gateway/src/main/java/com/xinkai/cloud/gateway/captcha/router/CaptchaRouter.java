@@ -19,6 +19,12 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @Configuration
 public class CaptchaRouter {
 
+    /**
+     * 获取验证码接口
+     *
+     * @param captchaHandler 验证码处理程序
+     * @return {@link RouterFunction}<{@link ServerResponse}>
+     */
     @Bean
     public RouterFunction<ServerResponse> captcha(CaptchaHandler captchaHandler) {
         return RouterFunctions.route(RequestPredicates.GET("/captcha").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), captchaHandler);

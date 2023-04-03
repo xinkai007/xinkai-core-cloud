@@ -1,6 +1,6 @@
 #服务信息
 server:
-  port: 9999
+  port: 9001
 
 spring:
   cloud:
