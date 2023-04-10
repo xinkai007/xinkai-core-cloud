@@ -47,6 +47,11 @@
             <groupId>com.xinkai.cloud</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
+        <!--JWT工具包-->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.xinkai.cloud</groupId>
             <artifactId>common-redis</artifactId>
