@@ -1,6 +1,6 @@
 #服务信息
 server:
-  port: 9001
+  port: 9999
 
 spring:
   cloud:
@@ -15,3 +15,9 @@ spring:
         shared-configs[0]:
           data-id: xinkai-common.yaml
           refresh: true
+
+# 接口访问白名单
+security:
+  ignoreUrls:
+    # 验证码接口
+    - /captcha

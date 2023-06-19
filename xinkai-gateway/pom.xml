@@ -42,24 +42,36 @@
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
         </dependency>
-        <!--项目核心依赖包-->
-        <dependency>
-            <groupId>com.xinkai.cloud</groupId>
-            <artifactId>common-core</artifactId>
-        </dependency>
         <!--JWT工具包-->
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
         </dependency>
+        <!--Spring Security-->
         <dependency>
-            <groupId>com.xinkai.cloud</groupId>
-            <artifactId>common-redis</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>2.6.3</version>
+        </dependency>
+        <!--项目核心依赖包-->
+        <dependency>
+            <groupId>com.xinkai.cloud</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xinkai.cloud</groupId>
+            <artifactId>common-redis</artifactId>
         </dependency>
     </dependencies>
 </project>

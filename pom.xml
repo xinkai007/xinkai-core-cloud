@@ -28,17 +28,20 @@
         <!-- 指定maven编译时读取文件使用的编码 文件拷贝时的编码-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- JDK 版本-->
+        <!--*************************JDK 版本*************************-->
         <java.version>1.8</java.version>
-        <!--Spring Cloud & Alibaba相关依赖-->
+        <!--*************************Spring Cloud & Alibaba相关依赖*************************-->
         <spring-cloud.version>2021.0.2</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-        <!--数据库配置-->
+        <!--*************************数据库配置*************************-->
         <redisson.version>3.16.8</redisson.version>
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
-        <!--工具包依赖-->
+        <redis.version>2.6.3</redis.version>
+        <!--*************************工具包依赖*************************-->
         <lombok.version>1.18.18</lombok.version>
-        <hutool.version>5.7.21</hutool.version>
+        <!--hutool工具包-->
+        <hutool.version>5.8.20</hutool.version>
+        <!--验证码工具包-->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <nimbus-jose-jwt.version>9.16.1</nimbus-jose-jwt.version>
     </properties>
@@ -76,17 +79,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--项目核心依赖包-->
-            <dependency>
-                <groupId>com.xinkai.cloud</groupId>
-                <artifactId>common-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.xinkai.cloud</groupId>
-                <artifactId>common-redis</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <!--验证码依赖包-->
             <dependency>
                 <groupId>com.github.whvcse</groupId>
@@ -99,6 +91,11 @@
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
             <!--mybatis-plus依赖包-->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -110,6 +107,17 @@
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+            <!--项目核心依赖包-->
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>common-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>common-redis</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
