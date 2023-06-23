@@ -12,6 +12,10 @@ package com.xinkai.common.core.constant;
  */
 public interface GlobalConstants {
     /**
+     * 全局状态:是
+     */
+    Integer STATUS_YES = 1;
+    /**
      * [ {接口路径:[角色编码]},...]
      */
     String URL_PERM_ROLES_KEY = "system:perm_roles_rule:url";
