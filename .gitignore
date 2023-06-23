@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Project Files ###
+docs/.back_xinkai-core-cloud
+bootstarp.yml
+
 ### IntelliJ IDEA ###
 .idea
 *.iml
