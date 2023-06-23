@@ -21,6 +21,10 @@
     <modules>
         <module>xinkai-common</module>
         <module>xinkai-gateway</module>
+        <module>xinkai-auth</module>
+        <module>xinkai-admin</module>
+        <module>xinkai-common/common-web</module>
+        <module>xinkai-common/common-mybatis</module>
     </modules>
 
     <!--版本控制-->
@@ -35,14 +39,19 @@
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <!--*************************数据库配置*************************-->
         <redisson.version>3.16.8</redisson.version>
-        <mybatis-plus.version>3.4.3</mybatis-plus.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <mybatis-plus-join.version>1.4.5</mybatis-plus-join.version>
         <redis.version>2.6.3</redis.version>
+        <druid.version>1.2.4</druid.version>
         <!--*************************工具包依赖*************************-->
         <lombok.version>1.18.18</lombok.version>
         <!--hutool工具包-->
         <hutool.version>5.8.20</hutool.version>
         <!--验证码工具包-->
         <easy-captcha.version>1.6.2</easy-captcha.version>
+        <!--ApiDoc-->
+        <swagger.version>1.6.2</swagger.version>
+        <knife4j.version>2.0.9</knife4j.version>
         <nimbus-jose-jwt.version>9.16.1</nimbus-jose-jwt.version>
     </properties>
 
@@ -57,6 +66,26 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-ui</artifactId>
+            <version>${knife4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -87,6 +116,11 @@
             </dependency>
             <!--数据库依赖包-->
             <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
@@ -102,13 +136,18 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.yulichang</groupId>
+                <artifactId>mybatis-plus-join-boot-starter</artifactId>
+                <version>${mybatis-plus-join.version}</version>
+            </dependency>
             <!--JWT工具包-->
             <dependency>
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
             </dependency>
-            <!--项目核心依赖包-->
+            <!--**********************************项目核心依赖包**********************************-->
             <dependency>
                 <groupId>com.xinkai.cloud</groupId>
                 <artifactId>common-core</artifactId>
@@ -116,7 +155,34 @@
             </dependency>
             <dependency>
                 <groupId>com.xinkai.cloud</groupId>
+                <artifactId>common-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
                 <artifactId>common-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!--鉴权系统-->
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>xinkai-auth</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!--管理系统-->
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>xinkai-admin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>admin-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xinkai.cloud</groupId>
+                <artifactId>common-mybatis</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
