@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: xinkai-admin
+  profiles:
+    active: dev
