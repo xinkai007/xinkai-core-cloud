@@ -62,7 +62,7 @@ public class ResourceServerManage implements ReactiveAuthorizationManager<Author
         //获取请求头中Token信息
         String token = request.getHeaders().getFirst(SecurityConstants.AUTHORIZATION_KEY);
         //判断Token中的前缀是否是Bearer，如果Token前缀是以Bearer开头则代表JWT有效且认证过
-        if (CharSequenceUtil.isNotBlank(token) || CharSequenceUtil.startWithIgnoreCase(token, SecurityConstants.JWT_PREFIX)) {
+        if (CharSequenceUtil.isNotBlank(token) || CharSequenceUtil.startWithIgnoreCase(token, SecurityConstants.JWT.JWT_PREFIX)) {
             //特殊场景可配置直接访问权限
             if (path.contains("/test")) {
                 return Mono.just(new AuthorizationDecision(false));

@@ -1,4 +1,3 @@
-#服务信息
 server:
   port: 9999
 
@@ -15,9 +14,12 @@ spring:
         shared-configs[0]:
           data-id: xinkai-common.yaml
           refresh: true
-
-# 接口访问白名单
 security:
   ignoreUrls:
-    # 验证码接口
+    # Knife4j
+    - /webjars/**
+    - /doc.html
+    - /swagger-resources/**
+    - /*/v2/api-docs
+    # 系统服务
     - /captcha

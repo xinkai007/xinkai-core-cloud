@@ -90,7 +90,7 @@ public class ResourceSecurityConfig {
                 .accessDeniedHandler(accessDeniedHandler())
                 //自定义未认证处理
                 .authenticationEntryPoint(authenticationEntryPoint())
-                .and().cors().disable();
+                .and().csrf().disable();
         return security.build();
     }
 

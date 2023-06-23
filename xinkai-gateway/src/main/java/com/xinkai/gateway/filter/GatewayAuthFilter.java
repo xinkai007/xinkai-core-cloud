@@ -68,11 +68,12 @@ public class GatewayAuthFilter implements GlobalFilter, Ordered {
         //1.从请求头中获取token
         String token = request.getHeaders().getFirst(SecurityConstants.AUTHORIZATION_KEY);
         //2.校验所有请求中的token前缀是否是正确的
-        if (CharSequenceUtil.isBlank(token) && !CharSequenceUtil.startWithIgnoreCase(token, SecurityConstants.JWT_PREFIX)) {
+        if (CharSequenceUtil.isBlank(token) || !CharSequenceUtil.startWithIgnoreCase(token, SecurityConstants.JWT.JWT_PREFIX)) {
             return chain.filter(exchange);
         }
+        //********* 如果存在token则对token进行合法型校验 **********
         //3.解析JWT获取jti，以jti为key判断redis的黑名单列表是否存在，存在则拦截访问
-        token = CharSequenceUtil.replaceIgnoreCase(token, SecurityConstants.JWT_PREFIX, Strings.EMPTY);
+        token = CharSequenceUtil.replaceIgnoreCase(token, SecurityConstants.JWT.JWT_PREFIX, Strings.EMPTY);
         String payload = StrUtil.toString(JWSObject.parse(token).getPayload());
         //4.将解析后的token转换成JSON对象
         JSONObject tokenJsonObj = JSONUtil.parseObj(payload);
