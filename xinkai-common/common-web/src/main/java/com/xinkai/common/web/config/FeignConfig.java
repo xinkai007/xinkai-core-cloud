@@ -1,4 +1,3 @@
-
 package com.xinkai.common.web.config;
 
 import feign.RequestInterceptor;
@@ -15,11 +14,12 @@ import java.util.Enumeration;
 
 
 /**
- * Feign相关配置类
- *
- * @author Gadfly
- * @since 2021-08-06 9:47
- */
+ * @className: com.xinkai.common.web.config.FeignConfig
+ * @description: Feign相关配置类
+ * @author: xinkai
+ * @email: xinkai8011@gmail.com
+ * @date: 2023/06/23
+ **/
 
 @Configuration
 public class FeignConfig {

@@ -36,6 +36,10 @@
             <groupId>com.xinkai.cloud</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xinkai.cloud</groupId>
+            <artifactId>admin-api</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>

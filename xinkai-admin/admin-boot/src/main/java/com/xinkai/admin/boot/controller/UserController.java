@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.controller;
 
 import com.xinkai.admin.api.dto.UserAuthDTO;
+import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
 import com.xinkai.admin.boot.service.UserService;
 import com.xinkai.common.core.result.Result;
 import io.swagger.annotations.Api;
@@ -33,5 +34,15 @@ public class UserController {
     @GetMapping("/getUserByUserName/{userName}")
     public Result<UserAuthDTO> getUserByUserName(@PathVariable String userName) {
         return Result.success(userService.getUserByUserName(userName));
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @return {@link Result}<{@link UserInfoVO}>
+     */
+    @GetMapping("/getUserInfo")
+    public Result<UserInfoVO> getUserInfo() {
+        return Result.success(userService.getUserInfo());
     }
 }

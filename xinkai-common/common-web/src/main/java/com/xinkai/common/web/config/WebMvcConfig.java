@@ -22,9 +22,21 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * @className: com.xinkai.common.web.config.WebMvcConfig
+ * @description: WebMvcConfig
+ * @author: xinkai
+ * @email: xinkai8011@gmail.com
+ * @date: 2023/06/23
+ **/
 @Configuration
 @Slf4j
 public class WebMvcConfig implements WebMvcConfigurer {
+    /**
+     * 配置消息转换器
+     *
+     * @param converters 转换器
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -43,6 +55,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         converters.add(0, jackson2HttpMessageConverter);
     }
 
+    /**
+     * 验证器
+     *
+     * @param autowireCapableBeanFactory 自动装配能力bean工厂
+     * @return {@link Validator}
+     */
     @Bean
     public Validator validator(final AutowireCapableBeanFactory autowireCapableBeanFactory) {
         ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class)

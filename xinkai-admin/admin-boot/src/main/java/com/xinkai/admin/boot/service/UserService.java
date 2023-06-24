@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.service;
 
 import com.xinkai.admin.api.dto.UserAuthDTO;
+import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
 
 /**
  * @className: UserService
@@ -17,4 +18,11 @@ public interface UserService {
      * @return {@link UserAuthDTO}
      */
     UserAuthDTO getUserByUserName(String username);
+
+    /**
+     * 获取用户信息
+     *
+     * @return {@link UserInfoVO}
+     */
+    UserInfoVO getUserInfo();
 }

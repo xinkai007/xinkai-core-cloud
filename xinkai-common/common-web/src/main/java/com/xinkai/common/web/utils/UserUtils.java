@@ -1,6 +1,6 @@
 package com.xinkai.common.web.utils;
 
-import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.json.JSONObject;
 import com.xinkai.common.core.constant.SecurityConstants;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class UserUtils {
     /**
      * 解析JWT获取用户ID
      *
-     * @return
+     * @return {@link Long}
      */
     public static Long getUserId() {
         Long userId = null;
@@ -32,33 +32,22 @@ public class UserUtils {
         return userId;
     }
 
-    public static Long getMemberId() {
-        Long memberId = null;
-        JSONObject jwtPayload = JwtUtils.getJwtPayload();
-        if (jwtPayload != null) {
-            memberId = jwtPayload.getLong("memberId");
-        }
-        return memberId;
-    }
-
     /**
      * 解析JWT获取用户ID
      *
-     * @return
+     * @return {@link Long}
      */
     public static Long getDeptId() {
-        Long id = JwtUtils.getJwtPayload().getLong("deptId");
-        return id;
+        return JwtUtils.getJwtPayload().getLong("deptId");
     }
 
     /**
      * 解析JWT获取获取用户名
      *
-     * @return
+     * @return {@link String}
      */
     public static String getUsername() {
-        String username = JwtUtils.getJwtPayload().getStr(SecurityConstants.USER_NAME_KEY);
-        return username;
+        return JwtUtils.getJwtPayload().getStr(SecurityConstants.USER_NAME_KEY);
     }
 
 
@@ -81,10 +70,10 @@ public class UserUtils {
     /**
      * 是否「超级管理员」
      *
-     * @return
+     * @return boolean
      */
     public static boolean isRoot() {
         List<String> roles = getRoles();
-        return CollectionUtil.isNotEmpty(roles) && roles.contains("ROOT");
+        return CollUtil.isNotEmpty(roles) && roles.contains("ROOT");
     }
 }

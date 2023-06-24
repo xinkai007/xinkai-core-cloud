@@ -7,7 +7,9 @@ import com.xinkai.admin.boot.mapper.UserMapper;
 import com.xinkai.admin.boot.pojo.entity.RoleEntity;
 import com.xinkai.admin.boot.pojo.entity.UserEntity;
 import com.xinkai.admin.boot.pojo.entity.UserRoleEntity;
+import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
 import com.xinkai.admin.boot.service.UserService;
+import com.xinkai.common.web.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -43,12 +45,35 @@ public class UserServiceImpl implements UserService {
                         .selectAs(UserEntity::getPassword, UserAuthDTO::getPassword)
                         .selectAs(UserEntity::getStatus, UserAuthDTO::getStatus)
                         .selectAs(UserEntity::getDeptId, UserAuthDTO::getDeptId)
-                        .selectAs(RoleEntity::getCode, UserAuthDTO::getRoles)
+                        .selectCollection(UserAuthDTO::getRoles, map -> map
+                                .result(RoleEntity::getCode))
                         .leftJoin(UserRoleEntity.class, UserRoleEntity::getUserId, UserEntity::getId)
                         .leftJoin(RoleEntity.class, RoleEntity::getId, UserRoleEntity::getRoleId)
                         .eq(UserEntity::getUserName, userName)
                         .eq(UserEntity::getIsDelete, 0));
         Assert.isTrue(userAuthDTO != null, USER_NOT_EXIST.getMsg());
         return userAuthDTO;
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @return {@link UserInfoVO}
+     */
+    @Override
+    public UserInfoVO getUserInfo() {
+        return userMapper.selectJoinOne(UserInfoVO.class,
+                new MPJLambdaWrapper<UserEntity>()
+                        .selectAs(UserEntity::getId, UserInfoVO::getUserId)
+                        .selectAs(UserEntity::getNickName, UserInfoVO::getNickName)
+                        .selectAs(UserEntity::getAvatar, UserInfoVO::getAvatar)
+                        .selectCollection(UserInfoVO::getRoles, map -> map
+                                .result(RoleEntity::getCode))
+                        .leftJoin(UserRoleEntity.class, UserRoleEntity::getUserId, UserEntity::getId)
+                        .leftJoin(RoleEntity.class, RoleEntity::getId, UserRoleEntity::getRoleId)
+                        .eq(UserEntity::getId, UserUtils.getUserId())
+                        .eq(UserEntity::getIsDelete, 0)
+        );
+
     }
 }

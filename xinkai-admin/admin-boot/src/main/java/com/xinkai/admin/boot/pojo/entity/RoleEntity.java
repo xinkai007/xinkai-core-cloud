@@ -1,11 +1,9 @@
 package com.xinkai.admin.boot.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.xinkai.common.mybatis.handler.StringArrayJsonTypeHandler;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -14,7 +12,6 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @className: RoleEntity
@@ -44,8 +41,7 @@ public class RoleEntity extends Model<RoleEntity> implements Serializable {
      * 角色编码
      */
     @ApiModelProperty(name = "角色编码", notes = "")
-    @TableField(typeHandler = StringArrayJsonTypeHandler.class)
-    private List<String> code;
+    private String code;
     /**
      * 显示顺序
      */
