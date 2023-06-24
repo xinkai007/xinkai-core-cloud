@@ -49,4 +49,14 @@ public class AuthController {
     public Result<OAuth2AccessToken> getToken(@ApiIgnore Principal principal, @ApiIgnore @RequestParam Map<String, String> parameters) {
         return Result.success(authService.getToken(principal, parameters));
     }
+
+    /**
+     * 注销
+     *
+     * @return {@link Result}
+     */
+    @PostMapping("/logout")
+    public Result<String> logOut() {
+        return Result.success(authService.logOut());
+    }
 }

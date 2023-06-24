@@ -23,8 +23,8 @@ public interface AdminFeign {
      * @param clientId 客户端id
      * @return {@link Result}<{@link ClientAuthDTO}>
      */
-    @GetMapping("/api/v1/authClient/getClientById/{clientId}")
-    Result<ClientAuthDTO> getClientById(@PathVariable String clientId);
+    @GetMapping("/api/v1/auth_client/client_info/{clientId}")
+    Result<ClientAuthDTO> clientInfo(@PathVariable String clientId);
 
     /**
      * 获取用户用户名
@@ -32,6 +32,6 @@ public interface AdminFeign {
      * @param userName 用户名
      * @return {@link Result}<{@link UserAuthDTO}>
      */
-    @GetMapping("/api/v1/user/getUserByUserName/{userName}")
+    @GetMapping("/api/v1/user/user_info/{userName}")
     Result<UserAuthDTO> getUserByUserName(@PathVariable String userName);
 }

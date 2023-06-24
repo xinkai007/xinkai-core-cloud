@@ -16,5 +16,5 @@ public interface AuthClientService {
      * @param clientId 客户机id
      * @return {@link ClientAuthDTO}
      */
-    ClientAuthDTO getClientById(String clientId);
+    ClientAuthDTO clientInfo(String clientId);
 }

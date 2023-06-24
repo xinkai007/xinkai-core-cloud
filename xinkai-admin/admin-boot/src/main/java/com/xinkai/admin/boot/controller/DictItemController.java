@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "字典数据表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/dictItem")
+@RequestMapping("/api/v1/dict_item")
 @RequiredArgsConstructor
 public class DictItemController {
     private final DictItemService dictItemService;

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "用户和角色关联表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/userRole")
+@RequestMapping("/api/v1/user_role")
 @RequiredArgsConstructor
 public class UserRoleController {
     private final UserRoleService userRoleService;

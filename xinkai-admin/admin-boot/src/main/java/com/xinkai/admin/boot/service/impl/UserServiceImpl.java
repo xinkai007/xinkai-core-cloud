@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
      * @return {@link UserAuthDTO}
      */
     @Override
-    public UserAuthDTO getUserByUserName(String userName) {
+    public UserAuthDTO userInfo(String userName) {
         UserAuthDTO userAuthDTO = userMapper.selectJoinOne(UserAuthDTO.class,
                 new MPJLambdaWrapper<UserEntity>()
                         .selectAs(UserEntity::getId, UserAuthDTO::getUserId)
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
      * @return {@link UserInfoVO}
      */
     @Override
-    public UserInfoVO getUserInfo() {
+    public UserInfoVO loginUserInfo() {
         return userMapper.selectJoinOne(UserInfoVO.class,
                 new MPJLambdaWrapper<UserEntity>()
                         .selectAs(UserEntity::getId, UserInfoVO::getUserId)

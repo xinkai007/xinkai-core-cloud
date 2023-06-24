@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "角色和菜单关联表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/roleMenu")
+@RequestMapping("/api/v1/role_menu")
 @RequiredArgsConstructor
 public class RoleMenuController {
     private final RoleMenuService roleMenuService;

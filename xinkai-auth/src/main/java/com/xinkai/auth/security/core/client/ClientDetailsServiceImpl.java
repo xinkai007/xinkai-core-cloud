@@ -45,7 +45,7 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
     @Cacheable(cacheNames = "auth", key = "'oauth-client:' + #clientId")
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         try {
-            Result<ClientAuthDTO> result = adminFeign.getClientById(clientId);
+            Result<ClientAuthDTO> result = adminFeign.clientInfo(clientId);
             //如果服务调用成功则将获取到可客户端信息保存在ClientDetails
             if (ResultCode.SUCCESS.getCode().equals(result.getCode())) {
                 ClientAuthDTO client = result.getData();

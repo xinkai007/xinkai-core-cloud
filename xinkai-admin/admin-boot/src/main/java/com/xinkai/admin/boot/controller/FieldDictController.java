@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "栏位词典表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/fieldDict")
+@RequestMapping("/api/v1/field_dict")
 @RequiredArgsConstructor
 public class FieldDictController {
     private final FieldDictService fieldDictService;

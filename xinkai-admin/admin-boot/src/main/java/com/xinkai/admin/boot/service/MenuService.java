@@ -19,5 +19,5 @@ public interface MenuService {
      *
      * @return {@link List}<{@link Tree}<{@link Long}>>
      */
-    List<Tree<Long>> getRoutes();
+    List<Tree<Long>> routes();
 }

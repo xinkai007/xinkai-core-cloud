@@ -23,7 +23,7 @@ public class AdminFeignFallback implements AdminFeign {
      * @return {@link Result}<{@link ClientAuthDTO}>
      */
     @Override
-    public Result<ClientAuthDTO> getClientById(String clientId) {
+    public Result<ClientAuthDTO> clientInfo(String clientId) {
         log.error("AdminFeignFallback.getClientById feign远程获取客户端异常！");
         return Result.failed(ResultCode.DEGRADATION);
     }

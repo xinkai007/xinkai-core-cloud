@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "鉴权客户端表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/authClient")
+@RequestMapping("/api/v1/auth_client")
 @RequiredArgsConstructor
 public class AuthClientController {
     private final AuthClientService authClientService;
@@ -30,8 +30,8 @@ public class AuthClientController {
      * @param clientId 客户机id
      * @return {@link Result}<{@link ClientAuthDTO}>
      */
-    @GetMapping("/getClientById/{clientId}")
-    public Result<ClientAuthDTO> getClientById(@PathVariable String clientId) {
-        return Result.success(authClientService.getClientById(clientId));
+    @GetMapping("/client_info/{clientId}")
+    public Result<ClientAuthDTO> clientInfo(@PathVariable String clientId) {
+        return Result.success(authClientService.clientInfo(clientId));
     }
 }

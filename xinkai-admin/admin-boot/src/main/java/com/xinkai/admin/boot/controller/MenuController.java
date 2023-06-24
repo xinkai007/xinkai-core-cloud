@@ -31,8 +31,8 @@ public class MenuController {
      *
      * @return {@link Result}<{@link List}<{@link Tree}<{@link Long}>>>
      */
-    @GetMapping("/getRoutes")
-    public Result<List<Tree<Long>>> getRoutes() {
-        return Result.success(menuService.getRoutes());
+    @GetMapping("/routes")
+    public Result<List<Tree<Long>>> routes() {
+        return Result.success(menuService.routes());
     }
 }

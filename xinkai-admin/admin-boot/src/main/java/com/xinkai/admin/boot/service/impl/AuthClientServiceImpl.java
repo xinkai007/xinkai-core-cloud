@@ -23,8 +23,14 @@ import org.springframework.stereotype.Service;
 public class AuthClientServiceImpl implements AuthClientService {
     private final AuthClientMapper authClientMapper;
 
+    /**
+     * 通过id获取客户端信息
+     *
+     * @param clientId 客户机id
+     * @return {@link ClientAuthDTO}
+     */
     @Override
-    public ClientAuthDTO getClientById(String clientId) {
+    public ClientAuthDTO clientInfo(String clientId) {
         AuthClientEntity client = new AuthClientEntity().selectById(clientId);
         Assert.isTrue(client != null, "OAuth2 客户端不存在！");
         return BeanUtil.copyProperties(client, ClientAuthDTO.class);

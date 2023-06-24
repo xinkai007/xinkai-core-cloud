@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "字典类型表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/dictType")
+@RequestMapping("/api/v1/dict_type")
 @RequiredArgsConstructor
 public class DictTypeController {
     private final DictTypeService dictTypeService;

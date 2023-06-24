@@ -31,9 +31,9 @@ public class UserController {
      * @param userName 用户名
      * @return {@link Result}<{@link UserAuthDTO}>
      */
-    @GetMapping("/getUserByUserName/{userName}")
-    public Result<UserAuthDTO> getUserByUserName(@PathVariable String userName) {
-        return Result.success(userService.getUserByUserName(userName));
+    @GetMapping("/user_info/{userName}")
+    public Result<UserAuthDTO> userInfo(@PathVariable String userName) {
+        return Result.success(userService.userInfo(userName));
     }
 
     /**
@@ -41,8 +41,8 @@ public class UserController {
      *
      * @return {@link Result}<{@link UserInfoVO}>
      */
-    @GetMapping("/getUserInfo")
-    public Result<UserInfoVO> getUserInfo() {
-        return Result.success(userService.getUserInfo());
+    @GetMapping("/login_user_info")
+    public Result<UserInfoVO> loginUserInfo() {
+        return Result.success(userService.loginUserInfo());
     }
 }

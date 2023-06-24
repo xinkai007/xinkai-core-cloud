@@ -43,6 +43,8 @@ public interface SecurityConstants {
          * 验证码key前缀
          */
         String VALIDATION_CODE_KEY_PREFIX = "CAPTCHA:";
+
+        String EXP = "exp";
     }
 
     /**

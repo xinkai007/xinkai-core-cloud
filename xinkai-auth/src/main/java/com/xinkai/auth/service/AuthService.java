@@ -22,4 +22,9 @@ public interface AuthService {
      * @return {@link OAuth2AccessToken}
      */
     OAuth2AccessToken getToken(Principal principal, Map<String, String> parameters);
+
+    /**
+     * 注销
+     */
+    String logOut();
 }

@@ -36,7 +36,7 @@ public class MenuServiceImpl implements MenuService {
      * @return {@link List}<{@link Tree}<{@link Long}>>
      */
     @Override
-    public List<Tree<Long>> getRoutes() {
+    public List<Tree<Long>> routes() {
         List<MenuRoutesDTO> menuRoutes = menuMapper.selectJoinList(MenuRoutesDTO.class, new MPJLambdaWrapper<MenuEntity>()
                 .selectAs(MenuEntity::getId, MenuRoutesDTO::getId)
                 .selectAs(MenuEntity::getName, MenuRoutesDTO::getName)

@@ -17,12 +17,12 @@ public interface UserService {
      * @param username 用户名
      * @return {@link UserAuthDTO}
      */
-    UserAuthDTO getUserByUserName(String username);
+    UserAuthDTO userInfo(String username);
 
     /**
      * 获取用户信息
      *
      * @return {@link UserInfoVO}
      */
-    UserInfoVO getUserInfo();
+    UserInfoVO loginUserInfo();
 }

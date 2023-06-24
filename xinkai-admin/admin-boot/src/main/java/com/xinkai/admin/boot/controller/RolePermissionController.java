@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Api(tags = "角色权限表对象功能接口")
 @RestController
-@RequestMapping("/api/v1/rolePermission")
+@RequestMapping("/api/v1/role_permission")
 @RequiredArgsConstructor
 public class RolePermissionController {
     private final RolePermissionService rolePermissionService;
