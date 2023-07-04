@@ -1,7 +1,10 @@
 package com.xinkai.admin.boot.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xinkai.admin.api.dto.UserAuthDTO;
+import com.xinkai.admin.boot.pojo.query.UserListQuery;
 import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
+import com.xinkai.admin.boot.pojo.vo.UserListVO;
 
 /**
  * @className: UserService
@@ -25,4 +28,12 @@ public interface UserService {
      * @return {@link UserInfoVO}
      */
     UserInfoVO loginUserInfo();
+
+    /**
+     * 用户列表查询
+     *
+     * @param userListQuery 用户列表查询
+     * @return {@link IPage}<{@link UserListVO}>
+     */
+    IPage<UserListVO> pages(UserListQuery userListQuery);
 }

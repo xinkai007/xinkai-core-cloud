@@ -1,6 +1,6 @@
 package com.xinkai.admin.boot.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.yulichang.base.MPJBaseMapper;
 import com.xinkai.admin.boot.pojo.entity.DeptEntity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,5 +12,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date: 2023-6-21
  **/
 @Mapper
-public interface DeptMapper extends BaseMapper<DeptEntity> {
+public interface DeptMapper extends MPJBaseMapper<DeptEntity> {
 }

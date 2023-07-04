@@ -1,18 +1,29 @@
 package com.xinkai.admin.boot.service.impl;
 
 import cn.hutool.core.lang.Assert;
+import cn.hutool.core.text.CharSequenceUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.xinkai.admin.api.dto.UserAuthDTO;
 import com.xinkai.admin.boot.mapper.UserMapper;
 import com.xinkai.admin.boot.pojo.entity.RoleEntity;
 import com.xinkai.admin.boot.pojo.entity.UserEntity;
 import com.xinkai.admin.boot.pojo.entity.UserRoleEntity;
+import com.xinkai.admin.boot.pojo.query.UserListQuery;
 import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
+import com.xinkai.admin.boot.pojo.vo.UserListVO;
 import com.xinkai.admin.boot.service.UserService;
+import com.xinkai.admin.boot.utils.dict.impl.UserDictConvert;
+import com.xinkai.common.core.exception.SystemException;
+import com.xinkai.common.core.result.ResultCode;
 import com.xinkai.common.web.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 import static com.xinkai.common.core.result.ResultCode.USER_NOT_EXIST;
 
@@ -28,6 +39,7 @@ import static com.xinkai.common.core.result.ResultCode.USER_NOT_EXIST;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
+    private final UserDictConvert userDictConvert;
 
     /**
      * 根据用户名获取用户信息
@@ -75,5 +87,42 @@ public class UserServiceImpl implements UserService {
                         .eq(UserEntity::getIsDelete, 0)
         );
 
+    }
+
+    /**
+     * 用户列表查询
+     *
+     * @param userListQuery 用户列表查询
+     * @return {@link IPage}<{@link UserListVO}>
+     */
+    @Override
+    @SneakyThrows
+    public IPage<UserListVO> pages(UserListQuery userListQuery) {
+        try {
+            Integer status = userListQuery.getStatus();
+            Integer dept = userListQuery.getDeptId();
+            String keywords = userListQuery.getKeywords();
+            return userDictConvert.dictConvertPage(
+                    userMapper.selectJoinPage(new Page<UserListVO>(userListQuery.getPageNum(), userListQuery.getPageSize()),
+                            UserListVO.class,
+                            new MPJLambdaWrapper<UserEntity>()
+                                    .selectAs(UserEntity::getId, UserListVO::getId)
+                                    .selectAs(UserEntity::getUserName, UserListVO::getUserName)
+                                    .selectAs(UserEntity::getNickName, UserListVO::getNickName)
+                                    .selectAs(UserEntity::getGender, UserListVO::getGender)
+                                    .selectAs(UserEntity::getDeptId, UserListVO::getDeptId)
+                                    .selectAs(UserEntity::getMobile, UserListVO::getMobile)
+                                    .selectAs(UserEntity::getStatus, UserListVO::getStatus)
+                                    .selectAs(UserEntity::getCreateTime, UserListVO::getCreateTime)
+                                    .eq(!Objects.equals(status, null) && !Objects.equals(status, -1), UserEntity::getStatus, status)
+                                    .eq(!Objects.equals(dept, null), UserEntity::getDeptId, dept)
+                                    .and(CharSequenceUtil.isNotEmpty(keywords), e -> e.like(UserEntity::getUserName, keywords)
+                                            .or().like(UserEntity::getMobile, keywords)
+                                            .or().likeRight(UserEntity::getNickName, keywords))
+                    ));
+        } catch (Exception e) {
+            log.error("UserServiceImpl.listQuery e:", e);
+            throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
+        }
     }
 }

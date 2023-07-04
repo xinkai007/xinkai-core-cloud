@@ -16,4 +16,9 @@ public interface RedisKeyPrefixConstants {
      * 验证码Key前缀
      */
     String VALIDATION_CODE_KEY_PREFIX = "CAPTCHA:";
+
+    /**
+     * dict复述,关键
+     */
+    String DICT_REDIS_KEY = "DICT:{}:{}";
 }

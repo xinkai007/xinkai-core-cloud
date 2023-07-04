@@ -1,4 +1,4 @@
-package com.xinkai.common.redis.redis;
+package com.xinkai.common.redis.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

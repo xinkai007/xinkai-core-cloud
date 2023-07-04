@@ -1,8 +1,12 @@
 package com.xinkai.admin.boot.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xinkai.admin.api.dto.UserAuthDTO;
+import com.xinkai.admin.boot.pojo.query.UserListQuery;
 import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
+import com.xinkai.admin.boot.pojo.vo.UserListVO;
 import com.xinkai.admin.boot.service.UserService;
+import com.xinkai.common.core.result.PageResult;
 import com.xinkai.common.core.result.Result;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +48,16 @@ public class UserController {
     @GetMapping("/login_user_info")
     public Result<UserInfoVO> loginUserInfo() {
         return Result.success(userService.loginUserInfo());
+    }
+
+    /**
+     * 用户列表查询
+     *
+     * @param userListQuery 用户列表查询
+     * @return {@link Result}<{@link IPage}<{@link UserListVO}>>
+     */
+    @GetMapping("/pages")
+    public PageResult<UserListVO> pages(UserListQuery userListQuery) {
+        return PageResult.success(userService.pages(userListQuery));
     }
 }
