@@ -28,7 +28,7 @@ public class DictUtil {
      * @return {@link String}
      */
     public String valueToLabel(String code, Object value) {
-        String key = StrFormatter.format(DICT_REDIS_KEY, code, value).toUpperCase();
+        String key = StrFormatter.format(DICT_REDIS_KEY, code, value);
         return redisUtil.get(key);
     }
 }

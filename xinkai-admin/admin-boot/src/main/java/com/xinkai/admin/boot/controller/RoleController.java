@@ -1,8 +1,12 @@
 package com.xinkai.admin.boot.controller;
 
+import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
+import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 import com.xinkai.admin.boot.service.RoleService;
+import com.xinkai.common.core.result.PageResult;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,4 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class RoleController {
     private final RoleService roleService;
+
+    /**
+     * 获取角色列表
+     *
+     * @param roleOptionsQuery 角色选择查询
+     * @return {@link PageResult}<{@link RoleOptionsVO}>
+     */
+    @GetMapping("/list")
+    public PageResult<RoleOptionsVO> list(RoleOptionsQuery roleOptionsQuery) {
+        return PageResult.success(roleService.list(roleOptionsQuery));
+    }
 }

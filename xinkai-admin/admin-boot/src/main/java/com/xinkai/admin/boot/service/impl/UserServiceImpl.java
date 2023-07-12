@@ -7,10 +7,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.xinkai.admin.api.dto.UserAuthDTO;
 import com.xinkai.admin.boot.mapper.UserMapper;
+import com.xinkai.admin.boot.pojo.dto.UserUpdatePasswordDTO;
+import com.xinkai.admin.boot.pojo.dto.UserUpdateStatusDTO;
 import com.xinkai.admin.boot.pojo.entity.RoleEntity;
 import com.xinkai.admin.boot.pojo.entity.UserEntity;
 import com.xinkai.admin.boot.pojo.entity.UserRoleEntity;
 import com.xinkai.admin.boot.pojo.query.UserListQuery;
+import com.xinkai.admin.boot.pojo.vo.UserDetailVO;
 import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
 import com.xinkai.admin.boot.pojo.vo.UserListVO;
 import com.xinkai.admin.boot.service.UserService;
@@ -21,6 +24,7 @@ import com.xinkai.common.web.utils.UserUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -40,6 +44,7 @@ import static com.xinkai.common.core.result.ResultCode.USER_NOT_EXIST;
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserDictConvert userDictConvert;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * 根据用户名获取用户信息
@@ -122,6 +127,64 @@ public class UserServiceImpl implements UserService {
                     ));
         } catch (Exception e) {
             log.error("UserServiceImpl.listQuery e:", e);
+            throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
+        }
+    }
+
+    /**
+     * 用户详细信息
+     *
+     * @param id id
+     * @return {@link UserDetailVO}
+     */
+    @Override
+    @SneakyThrows
+    public UserDetailVO detail(Long id) {
+        try {
+            new UserEntity().selectById(id);
+            return null;
+        } catch (Exception e) {
+            log.error("UserServiceImpl.detail e:", e);
+            throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
+        }
+    }
+
+    /**
+     * 修改用户状态
+     *
+     * @param userUpdateStatusDTO 用户更新状态dto
+     * @return {@link Boolean}
+     */
+    @Override
+    @SneakyThrows
+    public Boolean updateStatus(UserUpdateStatusDTO userUpdateStatusDTO) {
+        try {
+            return new UserEntity()
+                    .setId(userUpdateStatusDTO.getId())
+                    .setStatus(userUpdateStatusDTO.getStatus())
+                    .updateById();
+        } catch (Exception e) {
+            log.error("UserServiceImpl.updateStatus e:", e);
+            throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
+        }
+    }
+
+    /**
+     * 修改用户密码
+     *
+     * @param userUpdatePasswordDTO 用户更新密码dto
+     * @return {@link Boolean}
+     */
+    @Override
+    @SneakyThrows
+    public Boolean updatePassword(UserUpdatePasswordDTO userUpdatePasswordDTO) {
+        try {
+            return new UserEntity()
+                    .setId(userUpdatePasswordDTO.getId())
+                    .setPassword(passwordEncoder.encode(userUpdatePasswordDTO.getPassword()))
+                    .updateById();
+        } catch (Exception e) {
+            log.error("UserServiceImpl.updateStatus e:", e);
             throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
         }
     }

@@ -45,6 +45,8 @@ public class UserDictConvert extends DictConvert<UserListVO> {
         return page.setRecords(page.getRecords().stream().map(e -> {
             Integer gender = e.getGender();
             e.setGenderLabel(dictUtil.valueToLabel(DictEnums.GENDER.getValue(), gender));
+            Long deptId = e.getDeptId();
+            e.setDeptName(dictUtil.valueToLabel(DictEnums.DEPT.getValue(), deptId));
             return e;
         }).collect(Collectors.toList()));
     }

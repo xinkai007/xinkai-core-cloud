@@ -2,7 +2,10 @@ package com.xinkai.admin.boot.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xinkai.admin.api.dto.UserAuthDTO;
+import com.xinkai.admin.boot.pojo.dto.UserUpdatePasswordDTO;
+import com.xinkai.admin.boot.pojo.dto.UserUpdateStatusDTO;
 import com.xinkai.admin.boot.pojo.query.UserListQuery;
+import com.xinkai.admin.boot.pojo.vo.UserDetailVO;
 import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
 import com.xinkai.admin.boot.pojo.vo.UserListVO;
 
@@ -36,4 +39,28 @@ public interface UserService {
      * @return {@link IPage}<{@link UserListVO}>
      */
     IPage<UserListVO> pages(UserListQuery userListQuery);
+
+    /**
+     * 用户详细信息
+     *
+     * @param id id
+     * @return {@link UserDetailVO}
+     */
+    UserDetailVO detail(Long id);
+
+    /**
+     * 修改用户状态
+     *
+     * @param userUpdateStatusDTO 用户更新状态dto
+     * @return {@link Boolean}
+     */
+    Boolean updateStatus(UserUpdateStatusDTO userUpdateStatusDTO);
+
+    /**
+     * 修改用户密码
+     *
+     * @param userUpdatePasswordDTO 用户更新密码dto
+     * @return {@link Boolean}
+     */
+    Boolean updatePassword(UserUpdatePasswordDTO userUpdatePasswordDTO);
 }

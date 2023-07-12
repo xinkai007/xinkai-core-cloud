@@ -53,6 +53,11 @@ public class UserListVO {
     @ApiModelProperty(name = "部门ID", notes = "")
     private Long deptId;
     /**
+     * 部门名称
+     */
+    @ApiModelProperty(name = "部门名称", notes = "")
+    private String deptName;
+    /**
      * 用户头像
      */
     @ApiModelProperty(name = "用户头像", notes = "")
