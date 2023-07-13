@@ -17,11 +17,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @className: UserController
- * @description: 控制层
- * @author: xinkai
- * @email: xinkai8011@gmail.com
- * @date: 2023-6-21
+ * @author xinkai
+ * @className com.xinkai.admin.boot.controller.UserController
+ * @description 用户控制器
+ * @email xinkai8011@gmail.com
+ * @date 2023/07/13
  **/
 @Api(tags = "用户信息表对象功能接口")
 @RestController
@@ -63,16 +63,20 @@ public class UserController {
     }
 
     /**
+     * 细节
      * 用户详细信息
      *
-     * @return {@link Result}<>
+     * @param id id
+     * @return {@link Result}<{@link UserDetailVO}>
      */
+    @ApiOperation(value = "用户详细信息")
     @GetMapping("/detail/{id}")
     public Result<UserDetailVO> detail(@PathVariable Long id) {
         return Result.success(userService.detail(id));
     }
 
     /**
+     * 更新状态
      * 修改用户状态
      *
      * @param userUpdateStatusDTO 用户更新状态dto
@@ -85,6 +89,7 @@ public class UserController {
     }
 
     /**
+     * 更新密码
      * 修改用户密码
      *
      * @param userUpdatePasswordDTO 用户更新密码dto

@@ -10,11 +10,11 @@ import com.xinkai.admin.boot.pojo.vo.UserInfoVO;
 import com.xinkai.admin.boot.pojo.vo.UserListVO;
 
 /**
- * @className: UserService
- * @description: 服务接口
- * @author: xinkai
- * @email: xinkai8011@gmail.com
- * @date: 2023-6-21
+ * @author xinkai
+ * @className com.xinkai.admin.boot.service.UserService
+ * @description 用户服务
+ * @email xinkai8011@gmail.com
+ * @date 2023/07/13
  **/
 public interface UserService {
     /**

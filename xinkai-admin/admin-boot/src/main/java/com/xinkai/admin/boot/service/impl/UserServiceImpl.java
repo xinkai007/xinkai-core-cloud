@@ -32,11 +32,11 @@ import java.util.Objects;
 import static com.xinkai.common.core.result.ResultCode.USER_NOT_EXIST;
 
 /**
- * @className: UserServiceImpl
- * @description: 服务实现类
- * @author: xinkai
- * @email: xinkai8011@gmail.com
- * @date: 2023-6-21
+ * @author xinkai
+ * @className com.xinkai.admin.boot.service.impl.UserServiceImpl
+ * @description 用户服务impl
+ * @email xinkai8011@gmail.com
+ * @date 2023/07/13
  **/
 @Slf4j
 @Service
@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
             Integer dept = userListQuery.getDeptId();
             String keywords = userListQuery.getKeywords();
             return userDictConvert.dictConvertPage(
-                    userMapper.selectJoinPage(new Page<UserListVO>(userListQuery.getPageNum(), userListQuery.getPageSize()),
+                    userMapper.selectJoinPage(new Page<>(userListQuery.getPageNum(), userListQuery.getPageSize()),
                             UserListVO.class,
                             new MPJLambdaWrapper<UserEntity>()
                                     .selectAs(UserEntity::getId, UserListVO::getId)
