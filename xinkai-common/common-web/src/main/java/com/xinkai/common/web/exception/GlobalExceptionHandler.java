@@ -42,7 +42,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BindException.class)
     public <T> Result<T> processException(BindException e) {
-        log.error("BindException:{}", e.getMessage());
+        log.error("GlobalExceptionHandler.processException BindException:{}", e.getMessage());
         String msg = e.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining("；"));
         return Result.failed(ResultCode.PARAM_ERROR, msg);
     }
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public <T> Result<T> processException(ConstraintViolationException e) {
-        log.error("ConstraintViolationException:{}", e.getMessage());
+        log.error("GlobalExceptionHandler.processException ConstraintViolationException:{}", e.getMessage());
         String msg = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.joining("；"));
         return Result.failed(ResultCode.PARAM_ERROR, msg);
     }
@@ -72,7 +72,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public <T> Result<T> processException(MethodArgumentNotValidException e) {
-        log.error("MethodArgumentNotValidException:{}", e.getMessage());
+        log.error("GlobalExceptionHandler.processException MethodArgumentNotValidException:{}", e.getMessage());
         String msg = e.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining("；"));
         return Result.failed(ResultCode.PARAM_ERROR, msg);
     }
@@ -80,7 +80,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoHandlerFoundException.class)
     public <T> Result<T> processException(NoHandlerFoundException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processException NoHandlerFoundException:{}", e.getMessage(), e);
         return Result.failed(ResultCode.RESOURCE_NOT_FOUND);
     }
 
@@ -90,7 +90,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public <T> Result<T> processException(MissingServletRequestParameterException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processException MissingServletRequestParameterException:{}", e.getMessage(), e);
         return Result.failed(ResultCode.PARAM_IS_NULL);
     }
 
@@ -100,7 +100,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public <T> Result<T> processException(MethodArgumentTypeMismatchException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processException MethodArgumentTypeMismatchException:{}", e.getMessage(), e);
         return Result.failed(ResultCode.PARAM_ERROR, "类型错误");
     }
 
@@ -110,21 +110,21 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ServletException.class)
     public <T> Result<T> processException(ServletException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processException ServletException:{}", e.getMessage(), e);
         return Result.failed(e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public <T> Result<T> handleIllegalArgumentException(IllegalArgumentException e) {
-        log.error("非法参数异常，异常原因：{}", e.getMessage(), e);
+        log.error("GlobalExceptionHandler.handleIllegalArgumentException IllegalArgumentException 非法参数异常，异常原因：{}", e.getMessage(), e);
         return Result.failed(e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(JsonProcessingException.class)
     public <T> Result<T> handleJsonProcessingException(JsonProcessingException e) {
-        log.error("Json转换异常，异常原因：{}", e.getMessage(), e);
+        log.error("GlobalExceptionHandler.handleJsonProcessingException JsonProcessingException Json转换异常，异常原因：{}", e.getMessage(), e);
         return Result.failed(e.getMessage());
     }
 
@@ -134,7 +134,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public <T> Result<T> processException(HttpMessageNotReadableException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processException HttpMessageNotReadableException:{}", e.getMessage(), e);
         String errorMessage = "请求体不可为空";
         Throwable cause = e.getCause();
         if (cause != null) {
@@ -149,14 +149,14 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(TypeMismatchException.class)
     public <T> Result<T> processException(TypeMismatchException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processException TypeMismatchException:{}", e.getMessage(), e);
         return Result.failed(e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(SQLSyntaxErrorException.class)
     public <T> Result<T> processSQLSyntaxErrorException(SQLSyntaxErrorException e) {
-        log.error(e.getMessage(), e);
+        log.error("GlobalExceptionHandler.processSQLSyntaxErrorException SQLSyntaxErrorException:{}", e.getMessage(), e);
         String errorMsg = e.getMessage();
         if (StrUtil.isNotBlank(errorMsg) && errorMsg.contains("denied to user")) {
             return Result.failed("数据库用户无操作权限，建议本地搭建数据库环境");
@@ -168,6 +168,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(CompletionException.class)
     public <T> Result<T> processException(CompletionException e) {
+        log.error("GlobalExceptionHandler.processException CompletionException:{}", e.getMessage(), e);
         if (e.getMessage().startsWith("feign.FeignException")) {
             return Result.failed("微服务调用异常");
         }
@@ -177,15 +178,39 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(FeignException.BadRequest.class)
     public <T> Result<T> processException(FeignException.BadRequest e) {
-        log.info("微服务feign调用异常:{}", e.getMessage());
+        log.info("GlobalExceptionHandler.processException FeignException 微服务feign调用异常:{}", e.getMessage());
         return Result.failed(e.getMessage());
     }
 
+    /**
+     * 处理业务异常
+     *
+     * @param e e
+     * @return {@link Result}<{@link T}>
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BusinessException.class)
+    public <T> Result<T> handleBizException(BusinessException e) {
+        log.error("GlobalExceptionHandler.handleBusinessException BusinessException:{}", e.getMessage(), e);
+        if (e.getResultCode() != null) {
+            return Result.failed(e.getResultCode());
+        }
+        return Result.failed(e.getMessage());
+    }
+
+    /**
+     * 处理异常
+     *
+     * @param e e
+     * @return {@link Result}<{@link T}>
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
     public <T> Result<T> handleException(Exception e) {
+        log.error("GlobalExceptionHandler.handleException Exception:{}", e.getMessage(), e);
         return Result.failed(e.getLocalizedMessage());
     }
+
 
     /**
      * 传参类型错误时，用于消息转换

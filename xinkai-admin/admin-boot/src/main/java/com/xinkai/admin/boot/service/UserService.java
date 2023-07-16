@@ -63,4 +63,28 @@ public interface UserService {
      * @return {@link Boolean}
      */
     Boolean updatePassword(UserUpdatePasswordDTO userUpdatePasswordDTO);
+
+    /**
+     * 修改用户信息
+     *
+     * @param userDetailVO 用户详细签证官
+     * @return {@link Boolean}
+     */
+    Boolean update(UserDetailVO userDetailVO);
+
+    /**
+     * 添加用户
+     *
+     * @param userDetailVO 用户详细签证官
+     * @return {@link Boolean}
+     */
+    Boolean add(UserDetailVO userDetailVO);
+
+    /**
+     * 删除用户
+     *
+     * @param ids id
+     * @return {@link Boolean}
+     */
+    Boolean delete(String ids);
 }

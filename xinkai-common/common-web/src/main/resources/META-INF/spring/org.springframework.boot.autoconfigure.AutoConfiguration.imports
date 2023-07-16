@@ -1,0 +1,3 @@
+  com.xinkai.common.web.config.WebMvcConfig
+  com.xinkai.common.web.config.FeignConfig
+  com.xinkai.common.web.exception.GlobalExceptionHandler

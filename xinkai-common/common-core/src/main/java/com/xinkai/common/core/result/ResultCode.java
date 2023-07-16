@@ -37,6 +37,8 @@ public enum ResultCode implements IResultCode, Serializable {
 
     PARAM_ERROR("A0400", "用户请求参数错误"),
     RESOURCE_NOT_FOUND("A0401", "请求资源不存在"),
+    USER_NAME_REPEAT("A0402", "当前用户名已存在请重新输入"),
+    USER_ID_NULL("A0403", "删除的用户数据为空"),
     PARAM_IS_NULL("A0410", "请求必填参数为空"),
 
     USER_UPLOAD_FILE_ERROR("A0700", "用户上传文件异常"),

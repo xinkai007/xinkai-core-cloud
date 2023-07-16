@@ -15,6 +15,16 @@ public interface GlobalConstants {
      * 全局状态:是
      */
     Integer STATUS_YES = 1;
+
+    /**
+     * 全局状态:否
+     */
+    Integer STATUS_NO = 0;
+
+    /**
+     * 默认密码
+     */
+    String DEFAULT_PASSWORD = "xinkai@tech";
     /**
      * [ {接口路径:[角色编码]},...]
      */

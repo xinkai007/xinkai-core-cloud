@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.pojo.vo;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @date 2023/07/13
  **/
 @Data
+@Accessors(chain = true)
 public class UserDetailVO {
     /**
      * id
@@ -24,11 +26,11 @@ public class UserDetailVO {
     /**
      * 用户名
      */
-    private String username;
+    private String userName;
     /**
      * 昵称
      */
-    private String nickname;
+    private String nickName;
     /**
      * 密码
      */
@@ -44,7 +46,7 @@ public class UserDetailVO {
     /**
      * 性别
      */
-    private String gender;
+    private Integer gender;
     /**
      * 状态
      */
@@ -56,5 +58,5 @@ public class UserDetailVO {
     /**
      * 角色id
      */
-    private List<Integer> roleIds;
+    private List<Long> roleIds;
 }

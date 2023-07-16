@@ -28,12 +28,12 @@ public class UserRoleEntity extends Model<UserRoleEntity> implements Serializabl
      * 用户ID
      */
     @ApiModelProperty(name = "用户ID", notes = "")
-    private Integer userId;
+    private Long userId;
     /**
      * 角色ID
      */
     @ApiModelProperty(name = "角色ID", notes = "")
-    private Integer roleId;
+    private Long roleId;
     /**
      * 创建人
      */

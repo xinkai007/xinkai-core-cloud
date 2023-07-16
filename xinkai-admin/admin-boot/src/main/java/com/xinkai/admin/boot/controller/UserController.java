@@ -13,6 +13,7 @@ import com.xinkai.common.core.result.PageResult;
 import com.xinkai.common.core.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -101,4 +102,27 @@ public class UserController {
         return Result.judge(userService.updatePassword(userUpdatePasswordDTO));
     }
 
+    /**
+     * 修改用户信息
+     *
+     * @param userDetailVO 用户详细签证官
+     * @return {@link Result}<{@link Boolean}>
+     */
+    @ApiOperation(value = "修改用户信息")
+    @PostMapping("/update")
+    public Result<Boolean> update(@RequestBody UserDetailVO userDetailVO) {
+        return Result.judge(userService.update(userDetailVO));
+    }
+
+    @ApiOperation(value = "新增用户信息")
+    @PostMapping("/add")
+    public Result<Boolean> add(@RequestBody UserDetailVO userDetailVO) {
+        return Result.judge(userService.add(userDetailVO));
+    }
+
+    @ApiOperation(value = "新增用户信息")
+    @DeleteMapping("/delete/{ids}")
+    public Result<Boolean> delete(@ApiParam("用户ID多个以英文逗号分割") @PathVariable String ids) {
+        return Result.judge(userService.delete(ids));
+    }
 }
