@@ -1,0 +1,2 @@
+  com.xinkai.common.mybatis.config.MybatisPlusConfig
+  com.xinkai.common.mybatis.handler.MyMetaObjectHandler

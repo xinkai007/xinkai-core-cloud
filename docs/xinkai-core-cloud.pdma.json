@@ -4,7 +4,7 @@
   "avatar": "data:image/png;base64,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",
   "version": "4.6.0",
   "createdTime": "2023-6-23 21:12:18",
-  "updatedTime": "2023-6-23 21:16:02",
+  "updatedTime": "2023-7-22 11:25:59",
   "dbConns": [],
   "profile": {
     "default": {
@@ -235,7 +235,7 @@
         "ServiceImpl": "{{  var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n    \n    var pkVarName = \"undefinedId\";\n    var pkVarNameU = \"UndefinedId\";\n    var pkFieldKey = \"UNDEFINED\";\n    var pkDataType = \"String\";\n    it.entity.fields.forEach(function(field){\n        if(field.primaryKey){\n            pkFieldKey = field.defKey;\n            pkVarName = it.func.camel(field.defKey,false);\n            pkVarNameU = it.func.camel(field.defKey,true);\n            pkDataType = field[\"type\"];\n            return;\n        }\n    });\n    \n    var pkgName = it.entity.env.base.nameSpace;\n    var beanClass = it.entity.env.base.codeRoot;\n    var beanVarName = beanClass.charAt(0).toLowerCase()+beanClass.slice(1);\n    var serviceClass = beanClass+'Service';\n    var serviceVarName= beanVarName+'Service';\n    var mapperName = beanVarName+'Mapper';\n    \n}}package {{=pkgName}}.service.impl;\n$blankline\nimport org.springframework.stereotype.Service;\nimport lombok.extern.slf4j.Slf4j;\nimport lombok.RequiredArgsConstructor;\n\nimport {{=pkgName}}.mapper.{{=beanClass}}Mapper;\nimport {{=pkgName}}.service.{{=serviceClass}};\n\n/**\n* @className: {{=serviceClass}}Impl\n* @description: 服务实现类\n* @author: xinkai\n* @email: xinkai8011@gmail.com\n* @date: {{=fullYear}}-{{=month}}-{{=days}}\n**/\n@Slf4j\n@Service\n@RequiredArgsConstructor\npublic class {{=serviceClass}}Impl implements {{=serviceClass}}{\n    \n    private final {{=beanClass}}Mapper {{=mapperName}};\n    \n}",
         "Mapper": "{{  var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n    \n    var pkVarName = \"undefinedId\";\n    var pkDataType = \"String\";\n    it.entity.fields.forEach(function(field){\n        if(field.primaryKey){\n            pkVarName = it.func.camel(field.defKey,false);\n            pkDataType = field[\"type\"];\n            return;\n        }\n    });\n    \n    var pkgName = it.entity.env.base.nameSpace;\n    var beanClass = it.entity.env.base.codeRoot;\n    var beanVarName = beanClass.charAt(0).toLowerCase()+beanClass.slice(1);\n    var serviceClass = beanClass+'Service';\n    var serviceVarName= beanVarName+'Service';\n    \n}}package {{=pkgName}}.mapper;\n$blankline\n\nimport com.baomidou.mybatisplus.core.mapper.BaseMapper;\nimport org.apache.ibatis.annotations.Mapper;\nimport {{=pkgName}}.entity.{{=beanClass}}Entity;\n$blankline\n\n/**\n* @className: {{=beanClass}}Mapper\n* @description: {{=it.entity.defName}}\n* @author: xinkai\n* @email: xinkai8011@gmail.com\n* @date: {{=fullYear}}-{{=month}}-{{=days}}\n**/\n@Mapper\npublic interface {{=beanClass}}Mapper extends BaseMapper<{{=beanClass}}Entity>{\n}",
         "Mapper.xml": "{{  var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n    \n    var pkVarName = \"undefinedId\";\n    var pkDataType = \"String\";\n    var pkField = \"UNDEFINED_ID\";\n    it.entity.fields.forEach(function(field){\n        if(field.primaryKey){\n            pkField = field.defKey;\n            pkVarName = it.func.camel(field.defKey,false);\n            pkDataType = field[\"type\"];\n            return;\n        }\n    });\n    \n    var pkgName = it.entity.env.base.nameSpace;\n    var beanClass = it.entity.env.base.codeRoot;\n    var beanVarName = beanClass.charAt(0).toLowerCase()+beanClass.slice(1);\n    var serviceClass = beanClass+'Service';\n    var serviceVarName= beanVarName+'Service';\n    \n}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n$blankline\n\n<mapper namespace=\"{{=pkgName}}.mapper.{{=beanClass}}Mapper\">\n    \n</mapper>\n\n",
-        "Entity": "{{  var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n    \n    var pkVarName = \"undefinedId\";\n    var pkDataType = \"String\";\n    it.entity.fields.forEach(function(field){\n        if(field.primaryKey){\n            pkVarName = it.func.camel(field.defKey,false);\n            pkDataType = field[\"type\"];\n            return;\n        }\n    });\n    \n    var pkgName = it.entity.env.base.nameSpace;\n    var beanClass = it.entity.env.base.codeRoot;\n    var beanVarName = beanClass.charAt(0).toLowerCase()+beanClass.slice(1);\n    var serviceClass = beanClass+'Service';\n    var serviceVarName= beanVarName+'Service';\n    \n}}package {{=pkgName}}.entity;\n$blankline\nimport io.swagger.annotations.ApiModel;\nimport io.swagger.annotations.ApiModelProperty;\nimport com.baomidou.mybatisplus.annotation.TableName;\nimport com.baomidou.mybatisplus.annotation.TableId;\nimport com.baomidou.mybatisplus.extension.activerecord.Model;\nimport java.io.Serializable;\nimport java.util.Date;\nimport lombok.Data;\nimport lombok.EqualsAndHashCode;\nimport lombok.experimental.Accessors;\n$blankline\n\n/**\n* @className: {{=beanClass}}Entity\n* @description: {{=it.entity.defName}}\n* @author: xinkai\n* @email: xinkai8011@gmail.com\n* @date: {{=fullYear}}-{{=month}}-{{=days}}\n**/\n@Data\n@Accessors(chain = true)\n@EqualsAndHashCode(callSuper = true)\n@ApiModel(value = \"{{=it.entity.defName}}\",description = \"{{=it.entity.comment}}\")\n@TableName(\"{{=it.entity.defKey}}\")\npublic class {{=beanClass}}Entity extends Model<{{=beanClass}}Entity> implements Serializable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.defName,field.comment,';')}} */\n    @ApiModelProperty(name = \"{{=field.defName}}\",notes = \"{{=field.comment}}\")\n    {{? field.primaryKey }}\n    @TableId\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.defKey,false)}} ;\n{{~}}\n$blankline\n}"
+        "Entity": "{{  var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n    \n    var pkVarName = \"undefinedId\";\n    var pkDataType = \"String\";\n    it.entity.fields.forEach(function(field){\n        if(field.primaryKey){\n            pkVarName = it.func.camel(field.defKey,false);\n            pkDataType = field[\"type\"];\n            return;\n        }\n    });\n    \n    var pkgName = it.entity.env.base.nameSpace;\n    var beanClass = it.entity.env.base.codeRoot;\n    var beanVarName = beanClass.charAt(0).toLowerCase()+beanClass.slice(1);\n    var serviceClass = beanClass+'Service';\n    var serviceVarName= beanVarName+'Service';\n    \n}}package {{=pkgName}}.entity;\n$blankline\nimport io.swagger.annotations.ApiModel;\nimport io.swagger.annotations.ApiModelProperty;\nimport com.baomidou.mybatisplus.annotation.*;\nimport com.fasterxml.jackson.annotation.JsonFormat;\nimport com.fasterxml.jackson.annotation.JsonInclude;\nimport com.baomidou.mybatisplus.extension.activerecord.Model;\nimport java.io.Serializable;\nimport java.time.LocalDateTime;\nimport lombok.Data;\nimport lombok.EqualsAndHashCode;\nimport lombok.experimental.Accessors;\n$blankline\n\n/**\n* @className {{=beanClass}}Entity\n* @description {{=it.entity.defName}}\n* @author xinkai\n* @email xinkai8011@gmail.com\n* @date {{=fullYear}}-{{=month}}-{{=days}}\n**/\n@Data\n@TableName(\"{{=it.entity.defKey}}\")\n@Accessors(chain = true)\n@EqualsAndHashCode(callSuper = true)\n@ApiModel(value = \"{{=it.entity.defName}}\", description = \"{{=it.entity.defName}}实体类\")\npublic class {{=beanClass}}Entity extends Model<{{=beanClass}}Entity> implements Serializable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.defName,field.comment,';')}} */\n    @ApiModelProperty(name = \"{{=field.defName}}\"{{? field.comment != \"\" }}, notes = \"{{=field.comment}}\" {{?}})\n    {{? field.primaryKey }}autoIncrement\n    @TableId(type = {{? field.autoIncrement != \"\" }}IdType.AUTO{{?}}{{? field.autoIncrement == \"\" }}IdType.INPUT{{?}})\n    {{?}}{{? field.defKey == \"CREATE_USER\" }}\n    @TableField(fill = FieldFill.INSERT)\n    {{?}}{{? field.defKey == \"CREATE_TIME\" }}\n    @TableField(fill = FieldFill.INSERT)\n    @JsonInclude(value = JsonInclude.Include.NON_NULL)\n    @JsonFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")\n    {{?}}{{? field.defKey == \"UPDATE_USER\" }}\n    @TableField(fill = FieldFill.INSERT_UPDATE)\n    {{?}}{{? field.defKey == \"UPDATE_TIME\" }}\n    @TableField(fill = FieldFill.INSERT_UPDATE)\n    @JsonInclude(value = JsonInclude.Include.NON_NULL)\n    @JsonFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")\n    {{?}}{{? field.defKey == \"IS_DELETE\" }}\n    @TableLogic(value = \"0\", delval = \"1\")\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.defKey,false)}};\n{{~}}\n$blankline\n}"
       },
       {
         "applyFor": "29D1CE08-4C35-4D2D-AAA9-23D93305B52E",
@@ -456,63 +456,147 @@
     "headers": [
       {
         "refKey": "defKey",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "字段代码",
+        "freeze": false
       },
       {
         "refKey": "defName",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "显示名称",
+        "freeze": false
       },
       {
         "refKey": "primaryKey",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "主键",
+        "freeze": false
       },
       {
         "refKey": "notNull",
-        "hideInGraph": true
+        "hideInGraph": false,
+        "value": "不为空",
+        "freeze": false
       },
       {
         "refKey": "autoIncrement",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "自增",
+        "freeze": false
       },
       {
         "refKey": "domain",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "数据域",
+        "freeze": false
       },
       {
         "refKey": "type",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "数据类型",
+        "freeze": false
       },
       {
         "refKey": "len",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "长度",
+        "freeze": false
       },
       {
         "refKey": "scale",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "小数位数",
+        "freeze": false
       },
       {
         "refKey": "comment",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "说明",
+        "freeze": false
       },
       {
         "refKey": "refDict",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "数据字典",
+        "freeze": false
       },
       {
         "refKey": "defaultValue",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "默认值",
+        "freeze": false
       },
       {
         "refKey": "isStandard",
-        "hideInGraph": false
+        "hideInGraph": false,
+        "value": "标准字段",
+        "freeze": false
       },
       {
         "refKey": "uiHint",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "UI建议",
+        "freeze": false
       },
       {
         "refKey": "extProps",
-        "hideInGraph": true
+        "hideInGraph": true,
+        "value": "拓展属性",
+        "freeze": false
+      },
+      {
+        "refKey": "attr1",
+        "value": "拓展字段1",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr2",
+        "value": "拓展字段2",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr3",
+        "value": "拓展字段3",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr4",
+        "value": "拓展字段4",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr5",
+        "value": "拓展字段5",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr6",
+        "value": "拓展字段6",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr7",
+        "value": "拓展字段7",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr8",
+        "value": "拓展字段8",
+        "hideInGraph": true,
+        "enable": false
+      },
+      {
+        "refKey": "attr9",
+        "value": "拓展字段9",
+        "hideInGraph": true,
+        "enable": false
       }
     ],
     "menuWidth": "322px",
@@ -791,7 +875,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -846,6 +930,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -1243,7 +1363,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -1298,6 +1418,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -1716,7 +1872,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -1771,6 +1927,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -2120,7 +2312,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -2175,6 +2367,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -2562,7 +2790,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -2617,6 +2845,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -3085,7 +3349,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -3140,6 +3404,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -3489,7 +3789,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -3544,6 +3844,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -3893,7 +4229,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -3948,6 +4284,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -4210,7 +4582,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -4265,6 +4637,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -4554,7 +4962,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -4610,6 +5018,42 @@
           "freeze": false,
           "refKey": "extProps",
           "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
+          "hideInGraph": true
         }
       ],
       "correlations": [],
@@ -4661,8 +5105,8 @@
           "defKey": "USER_ID",
           "defName": "用户ID",
           "comment": "",
-          "domain": "6BC8F04B-6CFA-4995-98D3-318F5CDD774E",
-          "type": "INT",
+          "domain": "16120F75-6AA7-4483-868D-F07F511BB081",
+          "type": "",
           "len": "",
           "scale": "",
           "primaryKey": true,
@@ -4687,8 +5131,8 @@
           "defKey": "ROLE_ID",
           "defName": "角色ID",
           "comment": "",
-          "domain": "6BC8F04B-6CFA-4995-98D3-318F5CDD774E",
-          "type": "INT",
+          "domain": "16120F75-6AA7-4483-868D-F07F511BB081",
+          "type": "",
           "len": "",
           "scale": "",
           "primaryKey": true,
@@ -4871,7 +5315,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -4927,6 +5371,42 @@
           "freeze": false,
           "refKey": "extProps",
           "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
+          "hideInGraph": true
         }
       ],
       "correlations": [],
@@ -4971,7 +5451,7 @@
       "id": "3DA0EC98-ECF9-4365-A896-BCE5C0D83AFD",
       "defKey": "XK_USER",
       "defName": "用户信息表",
-      "comment": "",
+      "comment": "用户信息",
       "properties": {},
       "fields": [
         {
@@ -5411,7 +5891,7 @@
         {
           "freeze": false,
           "refKey": "notNull",
-          "hideInGraph": true
+          "hideInGraph": false
         },
         {
           "freeze": false,
@@ -5466,6 +5946,42 @@
         {
           "freeze": false,
           "refKey": "extProps",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr1",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr2",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr3",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr4",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr5",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr6",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr7",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr8",
+          "hideInGraph": true
+        },
+        {
+          "refKey": "attr9",
           "hideInGraph": true
         }
       ],
@@ -5625,9 +6141,9 @@
         "81CCA482-3F4D-4EAC-8CF9-F5E7BC098AD2": "timestamp",
         "56F4B55B-F0B8-4049-9E6B-50B95C1D793A": "DATE",
         "483F9346-C99E-4014-A1D2-A554606BD8A3": "DATETIME",
-        "797A1496-D649-4261-89B4-544132EC3F36": "Date",
-        "895CFD1D-4273-4D32-A2C4-CAC70200AB5B": "Date",
-        "A2EE7B4A-CE62-4290-B00C-B26C1BF18073": "Date"
+        "797A1496-D649-4261-89B4-544132EC3F36": "LocalDateTime",
+        "895CFD1D-4273-4D32-A2C4-CAC70200AB5B": "LocalDateTime",
+        "A2EE7B4A-CE62-4290-B00C-B26C1BF18073": "LocalDateTime"
       },
       {
         "defKey": "bytes",

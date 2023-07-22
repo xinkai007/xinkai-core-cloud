@@ -34,7 +34,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -266,7 +265,6 @@ public class UserServiceImpl implements UserService {
                     .setMobile(userDetailVO.getMobile())
                     .setEmail(userDetailVO.getEmail())
                     .setStatus(userDetailVO.getStatus())
-                    .setCreateTime(new Date())
                     .setPassword(passwordEncoder.encode(userName + GlobalConstants.DEFAULT_PASSWORD))
                     .setGender(userDetailVO.getGender());
             boolean insert = userEntity.insert();
@@ -292,8 +290,7 @@ public class UserServiceImpl implements UserService {
         List<Long> roleIds = userDetailVO.getRoleIds();
         List<UserRoleEntity> userRoles = roleIds.stream().map(e -> new UserRoleEntity()
                 .setUserId(userId)
-                .setRoleId(e)
-                .setIsDelete(GlobalConstants.STATUS_NO)).collect(Collectors.toList());
+                .setRoleId(e)).collect(Collectors.toList());
         return Db.saveBatch(userRoles);
     }
 

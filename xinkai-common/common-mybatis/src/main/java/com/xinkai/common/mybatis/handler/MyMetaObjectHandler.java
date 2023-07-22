@@ -1,6 +1,9 @@
 package com.xinkai.common.mybatis.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.xinkai.common.core.constant.GlobalConstants;
+import com.xinkai.common.web.utils.UserUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,7 @@ import java.time.LocalDateTime;
  * @email: xinkai8011@gmail.com
  * @date: 2023/06/23
  **/
+@Slf4j
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {
 
@@ -23,8 +27,11 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, "createTime", () -> LocalDateTime.now(), LocalDateTime.class);
-        this.strictUpdateFill(metaObject, "updateTime", () -> LocalDateTime.now(), LocalDateTime.class);
+        this.strictInsertFill(metaObject, "createTime", LocalDateTime::now, LocalDateTime.class);
+        this.strictInsertFill(metaObject, "createUser", UserUtils::getUsername, String.class);
+        this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
+        this.strictUpdateFill(metaObject, "updateUser", UserUtils::getUsername, String.class);
+        this.strictInsertFill(metaObject, "isDelete", Integer.class, GlobalConstants.STATUS_NO);
     }
 
     /**
@@ -34,7 +41,8 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.strictUpdateFill(metaObject, "updateTime", () -> LocalDateTime.now(), LocalDateTime.class);
+        this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
+        this.strictUpdateFill(metaObject, "updateUser", UserUtils::getUsername, String.class);
     }
 
 }
