@@ -35,4 +35,14 @@ public class MenuController {
     public Result<List<Tree<Long>>> routes() {
         return Result.success(menuService.routes());
     }
+
+    /**
+     * 资源
+     *
+     * @return {@link Result}<{@link List}<{@link Tree}<{@link Long}>>>
+     */
+    @GetMapping("/resources")
+    public Result<List<Tree<Long>>> resources() {
+        return Result.success(menuService.routes());
+    }
 }

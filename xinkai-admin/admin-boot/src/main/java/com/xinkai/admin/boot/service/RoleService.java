@@ -1,7 +1,9 @@
 package com.xinkai.admin.boot.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
+import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 
 /**
@@ -20,5 +22,13 @@ public interface RoleService {
      * @return {@link IPage}<{@link RoleOptionsVO}>
      */
     IPage<RoleOptionsVO> list(RoleOptionsQuery roleOptionsQuery);
+
+    /**
+     * 角色列表查询
+     *
+     * @param roleListQuery 角色列表查询
+     * @return {@link IPage}<{@link RoleInfoVO}>
+     */
+    IPage<RoleInfoVO> pages(RoleListQuery roleListQuery);
 
 }

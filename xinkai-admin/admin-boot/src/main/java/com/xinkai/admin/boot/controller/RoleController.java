@@ -1,6 +1,8 @@
 package com.xinkai.admin.boot.controller;
 
+import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
+import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 import com.xinkai.admin.boot.service.RoleService;
 import com.xinkai.common.core.result.PageResult;
@@ -33,5 +35,16 @@ public class RoleController {
     @GetMapping("/list")
     public PageResult<RoleOptionsVO> list(RoleOptionsQuery roleOptionsQuery) {
         return PageResult.success(roleService.list(roleOptionsQuery));
+    }
+
+    /**
+     * 页面
+     *
+     * @param roleListQuery 角色列表查询
+     * @return {@link PageResult}<{@link RoleInfoVO}>
+     */
+    @GetMapping("/pages")
+    public PageResult<RoleInfoVO> pages(RoleListQuery roleListQuery) {
+        return PageResult.success(roleService.pages(roleListQuery));
     }
 }

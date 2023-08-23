@@ -7,7 +7,9 @@ import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.xinkai.admin.boot.mapper.RoleMapper;
 import com.xinkai.admin.boot.pojo.entity.RoleEntity;
 import com.xinkai.admin.boot.pojo.entity.UserEntity;
+import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
+import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 import com.xinkai.admin.boot.service.RoleService;
 import com.xinkai.common.core.exception.SystemException;
@@ -42,7 +44,7 @@ public class RoleServiceImpl implements RoleService {
     @SneakyThrows
     public IPage<RoleOptionsVO> list(RoleOptionsQuery roleOptionsQuery) {
         try {
-            String name = roleOptionsQuery.getName();
+            String name = roleOptionsQuery.getKeywords();
             return roleMapper.selectJoinPage(new Page<RoleOptionsVO>(roleOptionsQuery.getPageNum(), roleOptionsQuery.getPageSize()),
                     RoleOptionsVO.class,
                     new MPJLambdaWrapper<RoleEntity>()
@@ -52,6 +54,33 @@ public class RoleServiceImpl implements RoleService {
                             .and(CharSequenceUtil.isNotEmpty(name), e -> e.like(RoleEntity::getName, name)));
         } catch (Exception e) {
             log.error("RoleServiceImpl.list e:", e);
+            throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
+        }
+    }
+
+    /**
+     * 角色列表查询
+     *
+     * @param roleListQuery 角色列表查询
+     * @return {@link IPage}<{@link RoleInfoVO}>
+     */
+    @Override
+    @SneakyThrows
+    public IPage<RoleInfoVO> pages(RoleListQuery roleListQuery) {
+        try {
+            String keywords = roleListQuery.getKeywords();
+            return roleMapper.selectJoinPage(new Page<>(roleListQuery.getPageNum(), roleListQuery.getPageSize()),
+                    RoleInfoVO.class,
+                    new MPJLambdaWrapper<RoleEntity>()
+                            .selectAs(RoleEntity::getId, RoleInfoVO::getId)
+                            .selectAs(RoleEntity::getName, RoleInfoVO::getName)
+                            .selectAs(RoleEntity::getCode, RoleInfoVO::getCode)
+                            .like(CharSequenceUtil.isNotEmpty(keywords), RoleEntity::getName, keywords)
+                            .or()
+                            .like(CharSequenceUtil.isNotEmpty(keywords), RoleEntity::getCode, keywords)
+            );
+        } catch (Exception e) {
+            log.error("UserServiceImpl.listQuery e:", e);
             throw new SystemException(ResultCode.SYSTEM_EXECUTION_ERROR);
         }
     }
