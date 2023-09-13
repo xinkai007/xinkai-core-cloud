@@ -63,7 +63,7 @@ public class RoleServiceImpl implements RoleService {
     public IPage<RoleOptionsVO> list(RoleOptionsQuery roleOptionsQuery) {
         try {
             String name = roleOptionsQuery.getKeywords();
-            return roleMapper.selectJoinPage(new Page<RoleOptionsVO>(roleOptionsQuery.getPageNum(), roleOptionsQuery.getPageSize()),
+            return roleMapper.selectJoinPage(new Page<>(roleOptionsQuery.getPageNum(), roleOptionsQuery.getPageSize()),
                     RoleOptionsVO.class,
                     new MPJLambdaWrapper<RoleEntity>()
                             .selectAs(RoleEntity::getId, RoleOptionsVO::getId)
@@ -139,9 +139,15 @@ public class RoleServiceImpl implements RoleService {
                 .updateById();
     }
 
+    /**
+     * 删除角色
+     *
+     * @param ids 身份证
+     * @return {@link Boolean}
+     */
     @Override
     public Boolean delete(String ids) {
-        List<Long> roleIds = Arrays.asList(ids.split(",")).stream().map(Long::parseLong).collect(Collectors.toList());
+        List<Long> roleIds = Arrays.stream(ids.split(",")).map(Long::parseLong).collect(Collectors.toList());
         //循环删除与角色相关信息
         Optional.of(roleIds)
                 .orElse(new ArrayList<>())
