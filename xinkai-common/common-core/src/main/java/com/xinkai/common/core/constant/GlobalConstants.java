@@ -29,6 +29,10 @@ public interface GlobalConstants {
      * [ {接口路径:[角色编码]},...]
      */
     String URL_PERM_ROLES_KEY = "system:perm_roles_rule:url";
+    /**
+     * [{按钮权限:[角色编码]},...]
+     */
+    String BTN_PERM_ROLES_KEY = "system:perm_roles_rule:btn";
 
     /**
      * 超级管理员角色编码
