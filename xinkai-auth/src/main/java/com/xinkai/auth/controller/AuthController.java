@@ -17,11 +17,11 @@ import java.security.Principal;
 import java.util.Map;
 
 /**
- * @className: AuthController
- * @description:
- * @author: xinkai
- * @email: xinkai8011@gmail.com
- * @date: 2023/6/20
+ * @author xinkai
+ * @className com.xinkai.auth.controller.AuthController
+ * @description 身份验证控制器
+ * @email xinkai8011@gmail.com
+ * @date 2023/11/23
  **/
 @Api(tags = "认证中心")
 @RestController

@@ -64,7 +64,7 @@ public class GatewayAuthFilter implements GlobalFilter, Ordered {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
         //0.指定环境特定逻辑处理
-        this.EnvFilter(request, response);
+        this.envFilter(request, response);
         //1.从请求头中获取token
         String token = request.getHeaders().getFirst(SecurityConstants.AUTHORIZATION_KEY);
         //2.校验所有请求中的token前缀是否是正确的
@@ -95,13 +95,16 @@ public class GatewayAuthFilter implements GlobalFilter, Ordered {
      *
      * @return boolean
      */
-    private void EnvFilter(ServerHttpRequest request, ServerHttpResponse response) {
+    private void envFilter(ServerHttpRequest request, ServerHttpResponse response) {
         switch (env) {
             case SecurityConstants.Env.PROD:
+                log.info("GatewayAuthFilter.envFilter SecurityConstants.Env.PRO");
                 break;
             case SecurityConstants.Env.SIT:
+                log.info("GatewayAuthFilter.envFilter SecurityConstants.Env.SIT");
                 break;
             case SecurityConstants.Env.DEV:
+                log.info("GatewayAuthFilter.envFilter SecurityConstants.Env.DEV");
                 break;
             default:
         }
