@@ -11,13 +11,13 @@ import java.util.List;
 /**
  * @author xinkai
  * @className com.xinkai.admin.boot.pojo.vo.MenuVO
- * @description 资源视图对象
+ * @description 菜单权限对象
  * @email xinkai8011@gmail.com
- * @date 2023/07/22
+ * @date 2023/11/30
  **/
 @Data
-@ApiModel("资源视图对象")
-public class MenuVO {
+@ApiModel("菜单权限对象")
+public class MenuPermVO {
 
     @ApiModelProperty("菜单列表")
     private List<MenuOption> menus;

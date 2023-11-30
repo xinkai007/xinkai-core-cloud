@@ -22,6 +22,11 @@ public interface GlobalConstants {
     Integer STATUS_NO = 0;
 
     /**
+     * 根菜单ID
+     */
+    Long ROOT_MENU_ID = 0L;
+
+    /**
      * 默认密码
      */
     String DEFAULT_PASSWORD = "xinkai@tech";

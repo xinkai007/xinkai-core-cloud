@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.controller;
 
 import cn.hutool.core.lang.tree.Tree;
+import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 import com.xinkai.admin.boot.service.MenuService;
 import com.xinkai.common.core.result.Result;
 import io.swagger.annotations.Api;
@@ -39,10 +40,10 @@ public class MenuController {
     /**
      * 资源
      *
-     * @return {@link Result}<{@link List}<{@link Tree}<{@link Long}>>>
+     * @return {@link Result}<{@link MenuPermVO}>
      */
     @GetMapping("/resources")
-    public Result<List<Tree<Long>>> resources() {
-        return Result.success(menuService.routes());
+    public Result<MenuPermVO> resources() {
+        return Result.success(menuService.getMenuResources());
     }
 }

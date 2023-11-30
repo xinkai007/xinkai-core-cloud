@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.service;
 
 import cn.hutool.core.lang.tree.Tree;
+import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 
 import java.util.List;
 
@@ -20,4 +21,11 @@ public interface MenuService {
      * @return {@link List}<{@link Tree}<{@link Long}>>
      */
     List<Tree<Long>> routes();
+
+    /**
+     * 获取菜单资源
+     *
+     * @return {@link MenuPermVO}
+     */
+    MenuPermVO getMenuResources();
 }

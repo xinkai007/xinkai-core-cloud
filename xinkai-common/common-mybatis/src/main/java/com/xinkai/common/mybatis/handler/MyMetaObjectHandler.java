@@ -28,9 +28,9 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.strictInsertFill(metaObject, "createTime", LocalDateTime::now, LocalDateTime.class);
-        this.strictInsertFill(metaObject, "createUser", UserUtils::getUsername, String.class);
+        this.strictInsertFill(metaObject, "createUser", UserUtils::getUserId, Long.class);
         this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
-        this.strictUpdateFill(metaObject, "updateUser", UserUtils::getUsername, String.class);
+        this.strictUpdateFill(metaObject, "updateUser", UserUtils::getUserId, Long.class);
         this.strictInsertFill(metaObject, "isDelete", Integer.class, GlobalConstants.STATUS_NO);
     }
 
@@ -42,7 +42,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
-        this.strictUpdateFill(metaObject, "updateUser", UserUtils::getUsername, String.class);
+        this.strictUpdateFill(metaObject, "updateUser", UserUtils::getUserId, Long.class);
     }
 
 }

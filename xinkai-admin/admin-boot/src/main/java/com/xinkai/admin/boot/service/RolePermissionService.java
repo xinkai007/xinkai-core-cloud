@@ -1,11 +1,14 @@
 package com.xinkai.admin.boot.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.xinkai.admin.boot.pojo.entity.RolePermissionEntity;
+
 /**
- * @className: RolePermissionService
- * @description: 服务接口
- * @author: xinkai
- * @email: xinkai8011@gmail.com
- * @date: 2023-6-21
+ * @author xinkai
+ * @className com.xinkai.admin.boot.service.RolePermissionService
+ * @description 角色权限服务
+ * @email xinkai8011@gmail.com
+ * @date 2023/11/30
  **/
-public interface RolePermissionService {
+public interface RolePermissionService extends IService<RolePermissionEntity> {
 }

@@ -1,5 +1,6 @@
 package com.xinkai.admin.boot.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -19,6 +20,8 @@ import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
 import com.xinkai.admin.boot.pojo.vo.RoleMenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 import com.xinkai.admin.boot.service.PermissionService;
+import com.xinkai.admin.boot.service.RoleMenuService;
+import com.xinkai.admin.boot.service.RolePermissionService;
 import com.xinkai.admin.boot.service.RoleService;
 import com.xinkai.common.core.exception.SystemException;
 import com.xinkai.common.core.result.ResultCode;
@@ -52,6 +55,8 @@ public class RoleServiceImpl implements RoleService {
     private final RoleMenuMapper roleMenuMapper;
     private final RolePermissionMapper rolePermissionMapper;
     private final PermissionService permissionService;
+    private final RoleMenuService roleMenuService;
+    private final RolePermissionService rolePermissionService;
 
     /**
      * 获取角色列表
@@ -161,7 +166,7 @@ public class RoleServiceImpl implements RoleService {
         int i = roleMapper.deleteBatchIds(roleIds);
         //删除成功，刷新权限缓存
         if (i > 0) {
-            permissionService.refreshPermRolesRules();
+            return permissionService.refreshPermRolesRules();
         }
         return true;
     }
@@ -194,6 +199,28 @@ public class RoleServiceImpl implements RoleService {
      */
     @Override
     public boolean updateRoleResource(Long roleId, RoleMenuPermDTO roleMenuPermDTO) {
-        return false;
+        // 删除角色菜单
+        roleMenuService.remove(new LambdaQueryWrapper<RoleMenuEntity>().eq(RoleMenuEntity::getRoleId, roleId));
+        // 新增角色菜单
+        List<Long> menuIds = roleMenuPermDTO.getMenuIds();
+        if (CollectionUtil.isNotEmpty(menuIds)) {
+            List<RoleMenuEntity> roleMenus = menuIds.stream().map(menuId -> new RoleMenuEntity()
+                    .setRoleId(roleId)
+                    .setMenuId(menuId)
+            ).collect(Collectors.toList());
+            roleMenuService.saveBatch(roleMenus);
+        }
+        // 删除角色权限
+        rolePermissionService.remove(new LambdaQueryWrapper<RolePermissionEntity>().eq(RolePermissionEntity::getRoleId, roleId));
+        // 新增角色权限
+        List<Long> permIds = roleMenuPermDTO.getPermIds();
+        if (CollectionUtil.isNotEmpty(permIds)) {
+            List<RolePermissionEntity> rolePerms = permIds.stream().map(permId -> new RolePermissionEntity()
+                    .setRoleId(roleId)
+                    .setPermissionId(permId)
+            ).collect(Collectors.toList());
+            rolePermissionService.saveBatch(rolePerms);
+        }
+        return true;
     }
 }

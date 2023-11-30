@@ -94,8 +94,7 @@ public class RoleController {
     @ApiOperation(value = "获取角色的资源ID集合")
     @PutMapping("/{roleId}/resources")
     public Result<RoleMenuPermVO> updateRoleResource(@PathVariable Long roleId, @RequestBody RoleMenuPermDTO roleMenuPermDTO) {
-        boolean result = roleService.updateRoleResource(roleId, roleMenuPermDTO);
-        return Result.judge(result);
+        return Result.judge(roleService.updateRoleResource(roleId, roleMenuPermDTO));
     }
 
     /**

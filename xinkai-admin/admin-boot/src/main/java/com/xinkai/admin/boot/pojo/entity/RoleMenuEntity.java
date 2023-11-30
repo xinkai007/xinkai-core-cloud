@@ -44,7 +44,7 @@ public class RoleMenuEntity extends Model<RoleMenuEntity> implements Serializabl
      */
     @ApiModelProperty(name = "创建人")
     @TableField(fill = FieldFill.INSERT)
-    private String createUser;
+    private Long createUser;
     /**
      * 创建时间
      */
@@ -58,7 +58,7 @@ public class RoleMenuEntity extends Model<RoleMenuEntity> implements Serializabl
      */
     @ApiModelProperty(name = "更新人")
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updateUser;
+    private Long updateUser;
     /**
      * 更新时间
      */
