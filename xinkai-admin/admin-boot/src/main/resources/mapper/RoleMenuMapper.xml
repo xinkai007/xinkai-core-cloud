@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.xinkai.admin.boot.mapper.RoleMenuMapper">
+    <!-- 获取角色拥有的菜单ID集合(父节点排除) -->
+    <select id="listMenuIdsByRoleId" resultType="java.lang.Long">
+        SELECT rm.menu_id
+        FROM XK_ROLE_MENU rm
+                 INNER JOIN XK_MENU m ON rm.menu_id = m.id
+        WHERE rm.role_id = #{roleId}
+          AND rm.menu_id NOT IN (SELECT m.parent_id
+                                 FROM XK_ROLE_MENU rm
+                                          INNER JOIN XK_MENU m ON rm.menu_id = m.id
+                                 WHERE rm.role_id = #{roleId})
+    </select>
 </mapper>

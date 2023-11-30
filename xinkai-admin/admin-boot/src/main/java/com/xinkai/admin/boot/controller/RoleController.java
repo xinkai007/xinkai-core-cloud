@@ -1,9 +1,11 @@
 package com.xinkai.admin.boot.controller;
 
 import com.xinkai.admin.boot.pojo.dto.RoleDTO;
+import com.xinkai.admin.boot.pojo.dto.RoleMenuPermDTO;
 import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
 import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
+import com.xinkai.admin.boot.pojo.vo.RoleMenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 import com.xinkai.admin.boot.service.RoleService;
 import com.xinkai.common.core.result.PageResult;
@@ -80,6 +82,33 @@ public class RoleController {
     @DeleteMapping("/{ids}")
     public Result<Boolean> deleteRoles(@ApiParam("删除角色，多个以英文逗号(,)分割") @PathVariable String ids) {
         return Result.judge(roleService.delete(ids));
+    }
+
+    /**
+     * 更新角色资源
+     *
+     * @param roleId          角色ID
+     * @param roleMenuPermDTO 角色菜单权限dto
+     * @return {@link Result}<{@link RoleMenuPermVO}>
+     */
+    @ApiOperation(value = "获取角色的资源ID集合")
+    @PutMapping("/{roleId}/resources")
+    public Result<RoleMenuPermVO> updateRoleResource(@PathVariable Long roleId, @RequestBody RoleMenuPermDTO roleMenuPermDTO) {
+        boolean result = roleService.updateRoleResource(roleId, roleMenuPermDTO);
+        return Result.judge(result);
+    }
+
+    /**
+     * 获取角色资源
+     *
+     * @param roleId 角色ID
+     * @return {@link Result}<{@link RoleMenuPermVO}>
+     */
+    @ApiOperation(value = "获取角色的资源ID集合", notes = "资源包括菜单和权限ID")
+    @GetMapping("/{roleId}/resources")
+    public Result<RoleMenuPermVO> getRoleResources(@ApiParam("角色ID") @PathVariable Long roleId) {
+        RoleMenuPermVO resourceIds = roleService.getRoleResources(roleId);
+        return Result.success(resourceIds);
     }
 }
 

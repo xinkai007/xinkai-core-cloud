@@ -11,10 +11,12 @@ import com.xinkai.admin.boot.mapper.RoleMenuMapper;
 import com.xinkai.admin.boot.mapper.RolePermissionMapper;
 import com.xinkai.admin.boot.mapper.UserRoleMapper;
 import com.xinkai.admin.boot.pojo.dto.RoleDTO;
+import com.xinkai.admin.boot.pojo.dto.RoleMenuPermDTO;
 import com.xinkai.admin.boot.pojo.entity.*;
 import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
 import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
+import com.xinkai.admin.boot.pojo.vo.RoleMenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 import com.xinkai.admin.boot.service.PermissionService;
 import com.xinkai.admin.boot.service.RoleService;
@@ -49,7 +51,6 @@ public class RoleServiceImpl implements RoleService {
     private final UserRoleMapper userRoleMapper;
     private final RoleMenuMapper roleMenuMapper;
     private final RolePermissionMapper rolePermissionMapper;
-
     private final PermissionService permissionService;
 
     /**
@@ -163,5 +164,36 @@ public class RoleServiceImpl implements RoleService {
             permissionService.refreshPermRolesRules();
         }
         return true;
+    }
+
+    /**
+     * 获取角色资源
+     *
+     * @param roleId 角色ID
+     * @return {@link RoleMenuPermVO}
+     */
+    @Override
+    public RoleMenuPermVO getRoleResources(Long roleId) {
+        // 获取角色拥有的菜单ID集合
+        List<Long> menuIds = roleMenuMapper.listMenuIdsByRoleId(roleId);
+        // 获取角色拥有的权限ID集合
+        List<Long> permIds = rolePermissionMapper.selectJoinList(Long.class, new MPJLambdaWrapper<RolePermissionEntity>()
+                .select(RolePermissionEntity::getPermissionId)
+                .innerJoin(PermissionEntity.class, PermissionEntity::getId, RolePermissionEntity::getPermissionId)
+                .eq(RolePermissionEntity::getRoleId, roleId)
+        );
+        return new RoleMenuPermVO().setMenuIds(menuIds).setPermIds(permIds);
+    }
+
+    /**
+     * 修改角色的资源权限
+     *
+     * @param roleId          角色ID
+     * @param roleMenuPermDTO 角色菜单权限dto
+     * @return boolean
+     */
+    @Override
+    public boolean updateRoleResource(Long roleId, RoleMenuPermDTO roleMenuPermDTO) {
+        return false;
     }
 }

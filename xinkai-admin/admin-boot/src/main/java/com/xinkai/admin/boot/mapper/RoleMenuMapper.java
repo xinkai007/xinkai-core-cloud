@@ -4,6 +4,8 @@ import com.github.yulichang.base.MPJBaseMapper;
 import com.xinkai.admin.boot.pojo.entity.RoleMenuEntity;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @className: RoleMenuMapper
  * @description: 角色和菜单关联表
@@ -13,4 +15,11 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface RoleMenuMapper extends MPJBaseMapper<RoleMenuEntity> {
+    /**
+     * 获取角色拥有的菜单ID集合
+     *
+     * @param roleId 角色ID
+     * @return {@link List}<{@link Long}>
+     */
+    List<Long> listMenuIdsByRoleId(Long roleId);
 }

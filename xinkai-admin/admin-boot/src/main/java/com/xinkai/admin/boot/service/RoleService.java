@@ -2,9 +2,11 @@ package com.xinkai.admin.boot.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xinkai.admin.boot.pojo.dto.RoleDTO;
+import com.xinkai.admin.boot.pojo.dto.RoleMenuPermDTO;
 import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
 import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
+import com.xinkai.admin.boot.pojo.vo.RoleMenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.RoleOptionsVO;
 
 /**
@@ -55,5 +57,22 @@ public interface RoleService {
      * @return {@link Boolean}
      */
     Boolean delete(String roleIds);
+
+    /**
+     * 获取角色资源
+     *
+     * @param roleId 角色ID
+     * @return {@link RoleMenuPermVO}
+     */
+    RoleMenuPermVO getRoleResources(Long roleId);
+
+    /**
+     * 修改角色的资源权限
+     *
+     * @param roleId          角色ID
+     * @param roleMenuPermDTO 角色菜单权限dto
+     * @return boolean
+     */
+    boolean updateRoleResource(Long roleId, RoleMenuPermDTO roleMenuPermDTO);
 
 }
