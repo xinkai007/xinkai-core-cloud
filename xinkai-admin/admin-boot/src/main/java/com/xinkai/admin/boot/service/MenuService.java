@@ -2,6 +2,8 @@ package com.xinkai.admin.boot.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
+import com.xinkai.admin.boot.pojo.vo.MenuVO;
+import com.xinkai.common.mybatis.base.Option;
 
 import java.util.List;
 
@@ -13,6 +15,14 @@ import java.util.List;
  * @date: 2023-6-21
  **/
 public interface MenuService {
+
+    /**
+     * 列表
+     *
+     * @param name 名字
+     * @return {@link List}<{@link MenuVO}>
+     */
+    List<MenuVO> list(String name);
 
     /**
      * 获取路线
@@ -28,4 +38,11 @@ public interface MenuService {
      * @return {@link MenuPermVO}
      */
     MenuPermVO getMenuResources();
+
+    /**
+     * 获取菜单选项
+     *
+     * @return {@link List}<{@link Option}<{@link Long}>>
+     */
+    List<Option<Long>> getMenuOptions();
 }

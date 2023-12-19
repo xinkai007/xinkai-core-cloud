@@ -2,9 +2,13 @@ package com.xinkai.admin.boot.controller;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
+import com.xinkai.admin.boot.pojo.vo.MenuVO;
 import com.xinkai.admin.boot.service.MenuService;
 import com.xinkai.common.core.result.Result;
+import com.xinkai.common.mybatis.base.Option;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +30,12 @@ import java.util.List;
 public class MenuController {
     private final MenuService menuService;
 
+    @GetMapping
+    @ApiOperation(value = "菜单列表")
+    public Result<List<MenuVO>> list(@ApiParam(value = "菜单名称", type = "query") String name) {
+        return Result.success(menuService.list(name));
+    }
+
     /**
      * 获取路线
      * 获取用户导航栏菜单信息
@@ -45,5 +55,16 @@ public class MenuController {
     @GetMapping("/resources")
     public Result<MenuPermVO> resources() {
         return Result.success(menuService.getMenuResources());
+    }
+
+    /**
+     * 获取菜单选项
+     *
+     * @return {@link Result}<{@link List}<{@link Option}<{@link Long}>>>
+     */
+    @GetMapping("/options")
+    @ApiOperation(value = "菜单列表")
+    public Result<List<Option<Long>>> options() {
+        return Result.success(menuService.getMenuOptions());
     }
 }
