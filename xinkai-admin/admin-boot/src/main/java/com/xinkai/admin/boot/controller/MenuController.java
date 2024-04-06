@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.controller;
 
 import cn.hutool.core.lang.tree.Tree;
+import com.xinkai.admin.boot.pojo.entity.MenuEntity;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.MenuVO;
 import com.xinkai.admin.boot.service.MenuService;
@@ -10,9 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -66,5 +65,17 @@ public class MenuController {
     @ApiOperation(value = "菜单列表")
     public Result<List<Option<Long>>> options() {
         return Result.success(menuService.getMenuOptions());
+    }
+
+    /**
+     * 添加菜单
+     *
+     * @param menuEntity 菜单实体
+     * @return {@link Result}<{@link Boolean}>
+     */
+    @PostMapping
+    @ApiOperation(value = "添加菜单")
+    public Result<Boolean> addMenu(@RequestBody MenuEntity menuEntity) {
+        return Result.judge(menuService.addMenu(menuEntity));
     }
 }

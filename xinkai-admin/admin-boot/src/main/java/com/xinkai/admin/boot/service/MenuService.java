@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.service;
 
 import cn.hutool.core.lang.tree.Tree;
+import com.xinkai.admin.boot.pojo.entity.MenuEntity;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.MenuVO;
 import com.xinkai.common.mybatis.base.Option;
@@ -45,4 +46,12 @@ public interface MenuService {
      * @return {@link List}<{@link Option}<{@link Long}>>
      */
     List<Option<Long>> getMenuOptions();
+
+    /**
+     * 添加菜单
+     *
+     * @param menuEntity 菜单实体
+     * @return boolean
+     */
+    boolean addMenu(MenuEntity menuEntity);
 }

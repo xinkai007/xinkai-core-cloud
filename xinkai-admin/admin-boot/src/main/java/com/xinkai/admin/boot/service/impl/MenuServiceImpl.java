@@ -140,6 +140,17 @@ public class MenuServiceImpl implements MenuService {
     }
 
     /**
+     * 添加菜单
+     *
+     * @param menuEntity 菜单实体
+     * @return boolean
+     */
+    @Override
+    public boolean addMenu(MenuEntity menuEntity) {
+        return false;
+    }
+
+    /**
      * 递归资源
      *
      * @param parentId 父ID
