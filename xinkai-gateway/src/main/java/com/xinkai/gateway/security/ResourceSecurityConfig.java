@@ -101,6 +101,7 @@ public class ResourceSecurityConfig {
      */
     @Bean
     ServerAccessDeniedHandler accessDeniedHandler() {
+        log.info("拒绝访问处理程序");
         return ((exchange, denied) -> Mono.defer(() -> Mono.just(exchange.getResponse()))
                 .flatMap(response -> ResponseUtils.writeErrorInfo(response, ResultCode.ACCESS_UNAUTHORIZED)));
     }
@@ -113,11 +114,13 @@ public class ResourceSecurityConfig {
      */
     @Bean
     ServerAuthenticationEntryPoint authenticationEntryPoint() {
+        log.info("认证入口点");
         return ((exchange, ex) -> Mono.defer(() -> Mono.just(exchange.getResponse()))
                 .flatMap(response -> ResponseUtils.writeErrorInfo(response, ResultCode.TOKEN_INVALID_OR_EXPIRED)));
     }
 
     /**
+     * jWT认证转换器
      * jwt认证转换器
      *
      * @return {@link Converter}<{@link Jwt}, {@link ?} {@link extends} {@link Mono}<{@link ?} {@link extends} {@link AbstractAuthenticationToken}>>

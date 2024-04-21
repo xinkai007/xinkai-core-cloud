@@ -6,7 +6,9 @@ import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
+import com.xinkai.admin.boot.converter.RoleConverter;
 import com.xinkai.admin.boot.mapper.RoleMapper;
 import com.xinkai.admin.boot.mapper.RoleMenuMapper;
 import com.xinkai.admin.boot.mapper.RolePermissionMapper;
@@ -14,6 +16,7 @@ import com.xinkai.admin.boot.mapper.UserRoleMapper;
 import com.xinkai.admin.boot.pojo.dto.RoleDTO;
 import com.xinkai.admin.boot.pojo.dto.RoleMenuPermDTO;
 import com.xinkai.admin.boot.pojo.entity.*;
+import com.xinkai.admin.boot.pojo.from.RoleForm;
 import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
 import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
@@ -49,7 +52,7 @@ import static com.xinkai.common.core.constant.GlobalConstants.STATUS_YES;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, RoleEntity> implements RoleService {
     private final RoleMapper roleMapper;
     private final UserRoleMapper userRoleMapper;
     private final RoleMenuMapper roleMenuMapper;
@@ -57,6 +60,7 @@ public class RoleServiceImpl implements RoleService {
     private final PermissionService permissionService;
     private final RoleMenuService roleMenuService;
     private final RolePermissionService rolePermissionService;
+    private final RoleConverter roleConverter;
 
     /**
      * 获取角色列表
@@ -136,13 +140,14 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public Boolean update(RoleDTO roleDTO) {
-        return new RoleEntity()
-                .setId(roleDTO.getId())
-                .setName(roleDTO.getName())
-                .setCode(roleDTO.getCode())
-                .setSort(roleDTO.getSort())
-                .setStatus(roleDTO.getStatus())
-                .updateById();
+//        return new RoleEntity()
+//                .setId(roleDTO.getId())
+//                .setName(roleDTO.getName())
+//                .setCode(roleDTO.getCode())
+//                .setSort(roleDTO.getSort())
+//                .setStatus(roleDTO.getStatus())
+//                .updateById();
+        return null;
     }
 
     /**
@@ -198,6 +203,7 @@ public class RoleServiceImpl implements RoleService {
      * @return boolean
      */
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public boolean updateRoleResource(Long roleId, RoleMenuPermDTO roleMenuPermDTO) {
         // 删除角色菜单
         roleMenuService.remove(new LambdaQueryWrapper<RoleMenuEntity>().eq(RoleMenuEntity::getRoleId, roleId));
@@ -221,6 +227,37 @@ public class RoleServiceImpl implements RoleService {
             ).collect(Collectors.toList());
             rolePermissionService.saveBatch(rolePerms);
         }
+        permissionService.refreshPermRolesRules();
         return true;
+    }
+
+    /**
+     * 保存角色
+     *
+     * @param roleForm 角色表单
+     * @return boolean
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean saveRole(RoleForm roleForm) {
+        Long roleId = roleForm.getId();
+        String roleCode = roleForm.getCode();
+
+        long count = this.count(new LambdaQueryWrapper<RoleEntity>()
+                .ne(roleId != null, RoleEntity::getId, roleId)
+                .and(wrapper ->
+                        wrapper.eq(RoleEntity::getCode, roleCode).or().eq(RoleEntity::getName, roleCode)
+                ));
+        Assert.isTrue(count == 0, "角色名称或角色编码重复，请检查！");
+
+        // 实体转换
+        RoleEntity role = roleConverter.form2Entity(roleForm);
+
+        boolean result = this.saveOrUpdate(role);
+        // 刷新权限缓存
+        if (result) {
+            permissionService.refreshPermRolesRules();
+        }
+        return result;
     }
 }

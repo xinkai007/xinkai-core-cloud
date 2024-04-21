@@ -1,10 +1,12 @@
 package com.xinkai.admin.boot.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.xinkai.admin.boot.mapper.MenuMapper;
 import com.xinkai.admin.boot.pojo.dto.MenuRoutesDTO;
@@ -15,7 +17,9 @@ import com.xinkai.admin.boot.pojo.entity.RoleMenuEntity;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.MenuVO;
 import com.xinkai.admin.boot.service.MenuService;
+import com.xinkai.admin.boot.service.PermissionService;
 import com.xinkai.common.core.constant.GlobalConstants;
+import com.xinkai.common.core.enums.MenuTypeEnum;
 import com.xinkai.common.mybatis.base.Option;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +38,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, MenuEntity> implements MenuService {
     private final MenuMapper menuMapper;
+    private final PermissionService permissionService;
 
     /**
      * 列表
@@ -140,14 +145,31 @@ public class MenuServiceImpl implements MenuService {
     }
 
     /**
-     * 添加菜单
+     * 保存菜单
      *
      * @param menuEntity 菜单实体
      * @return boolean
      */
     @Override
-    public boolean addMenu(MenuEntity menuEntity) {
-        return false;
+    public boolean saveMenu(MenuEntity menuEntity) {
+        String path = menuEntity.getPath();
+
+        MenuTypeEnum menuType = menuEntity.getType();  // 菜单类型
+        switch (menuType) {
+            case CATALOG: // 目录
+                Assert.isTrue(path.startsWith("/"), "目录路由路径格式错误，必须以/开始");
+                menuEntity.setComponent("Layout");
+                break;
+            case EXT_LINK: // 外链
+                menuEntity.setComponent(null);
+                break;
+        }
+
+        boolean result = menuEntity.insertOrUpdate();
+        if (result) {
+            permissionService.refreshPermRolesRules();
+        }
+        return result;
     }
 
     /**

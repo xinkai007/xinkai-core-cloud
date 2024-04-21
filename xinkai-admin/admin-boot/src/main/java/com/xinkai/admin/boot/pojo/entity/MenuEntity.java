@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.xinkai.common.core.enums.MenuTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,6 +26,7 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "菜单管理", description = "菜单管理实体类")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MenuEntity extends Model<MenuEntity> implements Serializable {
     /**
      * 主键ID
@@ -76,7 +78,7 @@ public class MenuEntity extends Model<MenuEntity> implements Serializable {
      * 菜单类型;(1:菜单，2:目录
      */
     @ApiModelProperty(name = "菜单类型", notes = "(1:菜单，2:目录")
-    private Integer type;
+    private MenuTypeEnum type;
     /**
      * 创建人
      */

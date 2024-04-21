@@ -1,6 +1,7 @@
 package com.xinkai.admin.boot.service;
 
 import cn.hutool.core.lang.tree.Tree;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.xinkai.admin.boot.pojo.entity.MenuEntity;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.MenuVO;
@@ -15,7 +16,7 @@ import java.util.List;
  * @email: xinkai8011@gmail.com
  * @date: 2023-6-21
  **/
-public interface MenuService {
+public interface MenuService extends IService<MenuEntity> {
 
     /**
      * 列表
@@ -53,5 +54,5 @@ public interface MenuService {
      * @param menuEntity 菜单实体
      * @return boolean
      */
-    boolean addMenu(MenuEntity menuEntity);
+    boolean saveMenu(MenuEntity menuEntity);
 }

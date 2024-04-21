@@ -1,13 +1,19 @@
 package com.xinkai.admin.boot.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.xinkai.admin.boot.pojo.entity.PermissionEntity;
+import com.xinkai.admin.boot.pojo.query.PermPageQuery;
+import com.xinkai.admin.boot.pojo.vo.PermPageVO;
+
 /**
- * @className: PermissionService
- * @description: 服务接口
- * @author: xinkai
- * @email: xinkai8011@gmail.com
- * @date: 2023-6-21
+ * @author xinkai
+ * @className com.xinkai.admin.boot.service.PermissionService
+ * @description 权限服务
+ * @email xinkai8011@gmail.com
+ * @date 2024/04/21
  **/
-public interface PermissionService {
+public interface PermissionService extends IService<PermissionEntity> {
 
     /**
      * 刷新Redis缓存中角色菜单的权限规则
@@ -16,4 +22,12 @@ public interface PermissionService {
      * @return {@link Boolean}
      */
     Boolean refreshPermRolesRules();
+
+    /**
+     * 获取权限分页列表
+     *
+     * @param permPageQuery 权限分页列表查询
+     * @return {@link IPage}<{@link PermPageVO}>
+     */
+    IPage<PermPageVO> listPermPages(PermPageQuery permPageQuery);
 }

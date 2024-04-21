@@ -80,6 +80,7 @@ public class GatewayAuthFilter implements GlobalFilter, Ordered {
         String jti = tokenJsonObj.getStr(SecurityConstants.JWT.JTI);
         //5.校验Redis中的黑名单列表是否包含当前用户
         boolean isBoolean = redisTemplate.hasKey(SecurityConstants.RedisHeader.TOKEN_BLACKLIST_PREFIX + jti);
+        log.info("GatewayAuthFilter.filter redisTemplate.hasKey(SecurityConstants.RedisHeader.TOKEN_BLACKLIST_PREFIX + jti) = {}", isBoolean);
         if (isBoolean) {
             return ResponseUtils.writeErrorInfo(response, ResultCode.TOKEN_ACCESS_FORBIDDEN);
         }

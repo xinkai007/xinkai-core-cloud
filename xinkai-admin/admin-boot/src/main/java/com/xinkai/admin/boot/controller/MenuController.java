@@ -5,15 +5,19 @@ import com.xinkai.admin.boot.pojo.entity.MenuEntity;
 import com.xinkai.admin.boot.pojo.vo.MenuPermVO;
 import com.xinkai.admin.boot.pojo.vo.MenuVO;
 import com.xinkai.admin.boot.service.MenuService;
+import com.xinkai.admin.boot.service.PermissionService;
 import com.xinkai.common.core.result.Result;
 import com.xinkai.common.mybatis.base.Option;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @className: MenuController
@@ -28,6 +32,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MenuController {
     private final MenuService menuService;
+    private final PermissionService permissionService;
 
     @GetMapping
     @ApiOperation(value = "菜单列表")
@@ -76,6 +81,48 @@ public class MenuController {
     @PostMapping
     @ApiOperation(value = "添加菜单")
     public Result<Boolean> addMenu(@RequestBody MenuEntity menuEntity) {
-        return Result.judge(menuService.addMenu(menuEntity));
+        return Result.judge(menuService.saveMenu(menuEntity));
+    }
+
+    /**
+     * 菜单详情
+     *
+     * @param id ID
+     * @return {@link Result}<{@link MenuEntity}>
+     */
+    @ApiOperation(value = "菜单详情")
+    @GetMapping("/{id}")
+    public Result<MenuEntity> detail(@ApiParam(value = "菜单ID") @PathVariable Long id) {
+        return Result.success(menuService.getById(id));
+    }
+
+    /**
+     * 修改菜单
+     *
+     * @param menu 菜单
+     * @return {@link Result}<{@link Boolean}>
+     */
+    @ApiOperation(value = "修改菜单")
+    @PutMapping(value = "/{id}")
+    @CacheEvict(cacheNames = "system", key = "'routes'")
+    public Result<Boolean> updateMenu(@RequestBody MenuEntity menu) {
+        return Result.judge(menuService.saveMenu(menu));
+    }
+
+    /**
+     * 删除菜单
+     *
+     * @param ids IDs
+     * @return {@link Result}<{@link Boolean}>
+     */
+    @ApiOperation(value = "删除菜单")
+    @DeleteMapping("/{ids}")
+    @CacheEvict(cacheNames = "system", key = "'routes'")
+    public Result<Boolean> deleteMenus(@ApiParam("菜单ID，多个以英文(,)分割") @PathVariable("ids") String ids) {
+        boolean result = menuService.removeByIds(Arrays.stream(ids.split(",")).map(Long::valueOf).collect(Collectors.toList()));
+        if (result) {
+            permissionService.refreshPermRolesRules();
+        }
+        return Result.judge(result);
     }
 }

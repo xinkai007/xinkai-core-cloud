@@ -8,9 +8,11 @@
         FROM XK_ROLE_MENU rm
                  INNER JOIN XK_MENU m ON rm.menu_id = m.id
         WHERE rm.role_id = #{roleId}
+          AND rm.IS_DELETE = 0
           AND rm.menu_id NOT IN (SELECT m.parent_id
                                  FROM XK_ROLE_MENU rm
                                           INNER JOIN XK_MENU m ON rm.menu_id = m.id
-                                 WHERE rm.role_id = #{roleId})
+                                 WHERE rm.role_id = #{roleId}
+                                   AND rm.IS_DELETE = 0)
     </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.xinkai.common.mybatis.base;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -13,12 +14,16 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class PageBase {
+
     /**
      * 页码
      */
-    private Integer pageNum;
+    @ApiModelProperty(value = "页码", example = "1")
+    private int pageNum = 1;
+
     /**
-     * 页面大小
+     * 每页记录数
      */
-    private Integer pageSize;
+    @ApiModelProperty(value = "每页记录数", example = "10")
+    private int pageSize = 10;
 }

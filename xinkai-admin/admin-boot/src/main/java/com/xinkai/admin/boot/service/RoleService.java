@@ -3,6 +3,7 @@ package com.xinkai.admin.boot.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xinkai.admin.boot.pojo.dto.RoleDTO;
 import com.xinkai.admin.boot.pojo.dto.RoleMenuPermDTO;
+import com.xinkai.admin.boot.pojo.from.RoleForm;
 import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
 import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
@@ -74,5 +75,13 @@ public interface RoleService {
      * @return boolean
      */
     boolean updateRoleResource(Long roleId, RoleMenuPermDTO roleMenuPermDTO);
+
+    /**
+     * 保存角色
+     *
+     * @param roleForm 角色表单
+     * @return boolean
+     */
+    boolean saveRole(RoleForm roleForm);
 
 }

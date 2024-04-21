@@ -2,6 +2,7 @@ package com.xinkai.admin.boot.controller;
 
 import com.xinkai.admin.boot.pojo.dto.RoleDTO;
 import com.xinkai.admin.boot.pojo.dto.RoleMenuPermDTO;
+import com.xinkai.admin.boot.pojo.from.RoleForm;
 import com.xinkai.admin.boot.pojo.query.RoleListQuery;
 import com.xinkai.admin.boot.pojo.query.RoleOptionsQuery;
 import com.xinkai.admin.boot.pojo.vo.RoleInfoVO;
@@ -91,7 +92,7 @@ public class RoleController {
      * @param roleMenuPermDTO 角色菜单权限dto
      * @return {@link Result}<{@link RoleMenuPermVO}>
      */
-    @ApiOperation(value = "获取角色的资源ID集合")
+    @ApiOperation(value = "更新角色的资源ID集合")
     @PutMapping("/{roleId}/resources")
     public Result<RoleMenuPermVO> updateRoleResource(@PathVariable Long roleId, @RequestBody RoleMenuPermDTO roleMenuPermDTO) {
         return Result.judge(roleService.updateRoleResource(roleId, roleMenuPermDTO));
@@ -108,6 +109,12 @@ public class RoleController {
     public Result<RoleMenuPermVO> getRoleResources(@ApiParam("角色ID") @PathVariable Long roleId) {
         RoleMenuPermVO resourceIds = roleService.getRoleResources(roleId);
         return Result.success(resourceIds);
+    }
+
+    @ApiOperation(value = "新增角色")
+    @PostMapping
+    public Result<Boolean> addRole(@Valid @RequestBody RoleForm roleForm) {
+        return Result.judge(roleService.saveRole(roleForm));
     }
 }
 

@@ -1,5 +1,9 @@
 package com.xinkai.admin.boot.service;
 
+import com.xinkai.common.mybatis.base.Option;
+
+import java.util.List;
+
 /**
  * @className: DictItemService
  * @description: 服务接口
@@ -8,4 +12,6 @@ package com.xinkai.admin.boot.service;
  * @date: 2023-6-21
  **/
 public interface DictItemService {
+
+    List<Option<String>> listDictItemsByTypeCode(String typeCode);
 }

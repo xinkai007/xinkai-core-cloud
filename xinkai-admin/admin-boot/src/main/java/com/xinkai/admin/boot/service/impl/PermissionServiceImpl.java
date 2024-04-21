@@ -3,12 +3,17 @@ package com.xinkai.admin.boot.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.text.CharSequenceUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.xinkai.admin.boot.mapper.PermissionMapper;
 import com.xinkai.admin.boot.pojo.dto.PermRoleDTO;
 import com.xinkai.admin.boot.pojo.entity.PermissionEntity;
 import com.xinkai.admin.boot.pojo.entity.RoleEntity;
 import com.xinkai.admin.boot.pojo.entity.RolePermissionEntity;
+import com.xinkai.admin.boot.pojo.query.PermPageQuery;
+import com.xinkai.admin.boot.pojo.vo.PermPageVO;
 import com.xinkai.admin.boot.service.PermissionService;
 import com.xinkai.common.core.constant.GlobalConstants;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +37,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PermissionServiceImpl implements PermissionService {
+public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, PermissionEntity> implements PermissionService {
     private final PermissionMapper permissionMapper;
 
     private final RedisTemplate redisTemplate;
@@ -97,5 +102,17 @@ public class PermissionServiceImpl implements PermissionService {
                         .leftJoin(RolePermissionEntity.class, RolePermissionEntity::getPermissionId, PermissionEntity::getId)
                         .leftJoin(RoleEntity.class, RoleEntity::getId, RolePermissionEntity::getRoleId)
         );
+    }
+
+    /**
+     * 获取权限分页列表
+     *
+     * @param queryParams 查询参数
+     * @return {@link IPage}<{@link PermPageVO}>
+     */
+    @Override
+    public IPage<PermPageVO> listPermPages(PermPageQuery queryParams) {
+        Page<PermPageVO> page = new Page<>(queryParams.getPageNum(), queryParams.getPageSize());
+        return page.setRecords(this.baseMapper.listPermPages(page, queryParams));
     }
 }

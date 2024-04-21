@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -25,7 +24,7 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "角色表", description = "角色表实体类")
-public class RoleEntity extends Model<RoleEntity> implements Serializable {
+public class RoleEntity extends Model<RoleEntity> {
     /**
      * 主键ID
      */
