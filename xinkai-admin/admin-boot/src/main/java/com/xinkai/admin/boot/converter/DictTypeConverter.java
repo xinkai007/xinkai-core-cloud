@@ -2,6 +2,7 @@ package com.xinkai.admin.boot.converter;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xinkai.admin.boot.pojo.entity.DictTypeEntity;
+import com.xinkai.admin.boot.pojo.from.DictTypeForm;
 import com.xinkai.admin.boot.pojo.vo.DictTypePageVO;
 import org.mapstruct.Mapper;
 
@@ -16,4 +17,8 @@ import org.mapstruct.Mapper;
 public interface DictTypeConverter {
 
     Page<DictTypePageVO> entity2Page(Page<DictTypeEntity> page);
+
+    DictTypeForm entity2Form(DictTypeEntity entity);
+
+    DictTypeEntity form2Entity(DictTypeForm entity);
 }

@@ -120,7 +120,6 @@ public class ResourceSecurityConfig {
     }
 
     /**
-     * jWT认证转换器
      * jwt认证转换器
      *
      * @return {@link Converter}<{@link Jwt}, {@link ?} {@link extends} {@link Mono}<{@link ?} {@link extends} {@link AbstractAuthenticationToken}>>

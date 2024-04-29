@@ -1,4 +1,4 @@
-package com.xinkai.admin.boot.pojo.vo;
+package com.xinkai.admin.boot.pojo.from;
 
 
 import io.swagger.annotations.ApiModel;
@@ -6,9 +6,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 
+/**
+ * @author xinkai
+ * @className com.xinkai.admin.boot.pojo.from.DictTypeForm
+ * @description 字典类型表单
+ * @email xinkai8011@gmail.com
+ * @date 2024/04/21
+ **/
 @Data
 @ApiModel("字典类型")
-public class DictTypePageVO {
+public class DictTypeForm {
 
     @ApiModelProperty("字典类型ID")
     private Long id;
